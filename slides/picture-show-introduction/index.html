@@ -1,0 +1,146 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>A small introduction to picture show</title>
+        <link href="assets/css/show.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1319627002076" type="text/css" rel="stylesheet" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1><a href="https://github.com/softprops/picture-show" >A small introduction to picture show</a></h1><p><a href="https://twitter.com/tototoshi" >@tototoshi</a>
+</p></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h2>Agenda</h2><ul><li><a href="https://github.com/softprops/picture-show" >Picture Show</a> ってなに
+</li><li>インストール
+</li><li>使い方
+</li></ul></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h2><a href="https://github.com/softprops/picture-show" >Picture Show</a> ってなに</h2><ul><li>Markdown からスライドを作っちゃう素敵ツール
+</li><li>scala で書かれてます
+</li></ul></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h2>Why Picture Show ?</h2><p><a href="https://github.com/softprops/picture-show" title="I say why not. Slideshows should be relatively portable and should not require proprietary formats to run. Slideshow presentations should be as simple as possible for an audience to understand. Software should be the same way.">Slideshows should be relatively portable and should not require proprietary formats to run. Slideshow presentations should be as simple as possible for an audience to understand. Software should be the same way.</a>
+</p></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h2>ここが便利 その1</h2><p> <a href="http://daringfireball.net/projects/markdown/" title="Daring Fireball: Markdown">Markdown</a> で書ける
+</p></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h2>ここが便利 その2</h2><p> 最低限ファイル<span class="yellow">2つ</span>(conf.js, *.md)でOK
+</p></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h2>ここが便利 その3</h2><p>デフォルトでそこそこ<span class="red">カッコイイ</span>
+</p></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h2>ここが便利 その4</h2><p>シンタックスハイライトしてくれる！
+</p><pre><code class="prettyprint lang-scala">object HelloWorld {
+  def main(args: Array[String]): Unit = {
+    println(&quot;Hello, World!&quot;)
+  }
+}
+
+</code></pre></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h2>ここが便利 その5</h2><p>画像貼るのも簡単
+</p><p><img  src="intro/scalachan.png" alt="icon" />
+</p></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h2>ここが便利 その6</h2><p>レイアウトもしやすい
+</p><br />
+<pre><code class="prettyprint lang-html">&lt;center&gt;
+  &lt;span class=&quot;pink&quot;&gt;scalaちゃんかわいい&lt;/span&gt;
+&lt;/center&gt;
+</code></pre><br/><br/>
+<center><span class="pink">scalaちゃんかわいい</span></center>
+</div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h1>インストール</h1></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h2>必要なもの</h2><ul><li><a href="https://github.com/harrah/xsbt" title="harrah/xsbt - GitHub">sbt</a>
+</li><li><a href="https://github.com/n8han/conscript" title="n8han/conscript - GitHub">conscript</a>
+</li></ul></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h2>手順1</h2><pre><code class="prettyprint lang-sh"> $ git clone git://github.com/softprops/picture-show.git
+ $ cd picture-show
+ $ sbt publish-local
+</code></pre></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h2>手順2</h2><pre><code class="prettyprint lang-sh"> $ cs softprops/picture-show
+</code></pre></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h2>以上！</h2></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h1>使い方</h1></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h2>何を用意すれば良いの？</h2><ul><li>conf.js
+</li><li>.md
+</li></ul></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h2>conf.js</h2><pre><code class="prettyprint lang-js">{
+  &quot;title&quot;: &quot;some show title&quot;
+  &quot;sections&quot;: [
+    &quot;sectiona&quot;,
+    &quot;sectionb&quot;
+  ]
+}
+</code></pre></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h2>*.md</h2><p><img  src="usage/markdown_small.png" alt="markdown" />
+</p></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h2>ファイル配置</h2><pre>
+picture-show-introduction
+├── conf.js
+├── css
+│   └── custom.css
+└── intro
+    ├── intro.md
+    └── scalachan.png
+</pre>
+</div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h2>Customize!</h2><ul><li>css/custom.css
+</li><li>js/custom.js
+</li></ul></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h2>仕上げ</h2><br/>
+<pre><code class="prettyprint lang-sh"> $ pshow
+</code></pre><p>http://localhost:3000 で確認
+</p><br/>
+<pre><code class="prettyprint lang-sh"> $ pshow --offline -o=/path/to/output
+</code></pre><p>でexport
+</p></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><br/><br/><br/><br/>
+<h2><center><span class="red">完成<span></center></h2></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h2>まとめ</h2></div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><p><br/><br/><br/><br/>
+<a href="https://github.com/softprops/picture-show" title="softprops/picture-show - GitHub">Picture Show</a>でスライドばんばん作って発表しましょう
+</p></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h2>参考</h2><ul><li><a href="https://github.com/softprops/picture-show" title="softprops/picture-show - GitHub">Picture Show</a>
+</li><li><a href="http://daringfireball.net/projects/markdown/" title="Daring Fireball: Markdown">Daring Fireball: Markdown</a>
+</li><li><a href="http://d.hatena.ne.jp/xuwei/20110903/1315044919" title="Picture Show ためしてみたお（ ＾ω＾） - scalaとか・・・">Picture Show ためしてみたお（ ＾ω＾） - scalaとか・・・</a>
+</li></ul></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><br/><br/><br/><br/>
+<p>
+<center>ご清聴ありがとうございました。</center>
+</p>
+</div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
