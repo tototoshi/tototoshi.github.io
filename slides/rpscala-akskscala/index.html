@@ -1,0 +1,150 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>#rpscala/#akskscala</title>
+        <link href="assets/css/show.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1323494741806" type="text/css" rel="stylesheet" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><br><br><br><center>#rpscala/#akskscala</center>
+</div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h2>About me</h2><p>高橋です
+</p><p><a href="http://twitter.com/tototoshi/" >@tototoshi</a>
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1>このLTはCMである</h1></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1>Agenda</h1><ul><li>rpscala とは？
+</li><li>akskscala とは？
+</li></ul></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><br><br><br><center>#rpscala</center>
+</div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h1>#rpscala</h1><p>正式名称: Scala勉強会 in {渋谷,秋葉原}
+</p><p>主催:<a href="http://twitter.com/k4200jp" >@k4200jp</a>
+</p><p>2010年の8月末に初回が開催
+</p></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1>日時</h1><p>毎週水曜
+</p></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h1>場所</h1><p>渋谷(GMOメディア)
+</p><p>秋葉原(シェアリングス)
+</p><p>交互にお借りしてます
+</p></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h1>目指せ100回！</h1><p>現在62回
+</p><p>この会場にも常連さん多数
+</p></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h1><a href="http://www.scala-users.org/shibuya/index.php" >Wiki</a></h1></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h1>規模</h1><p>定員: 20人
+</p><p>最近は数人~10人くらいのことが多い
+</p></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h1>当初の野望</h1><p><a href="http://www.kaigai-engineer.com/blog/?p=59" >Programming Scala 読書会やろうぜ</a>
+</p><p>Read Programming Scala =&gt; #rpscala
+</p></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h1>実態</h1></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h1>なんでもあり</h1><p>Scalaに関係することならOK
+</p></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h1>よく言われる</h1><pre>
+494 ：デフォルトの名無しさん：2011/11/23(水) 01:30:16.47
+    http://www.scala-users.org/shibuya/index.php
+    これって毎週やってんでしょ？ネタなくならないの？
+    たまに録画みるけどすごいぐだぽよ～な感じだよね
+</pre>
+</div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h1>よく言われる</h1><p>Q: なんか怖そう
+<br/><br/>
+A: 殴る蹴るの事例はない
+</p></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h1>よく言われる</h1><p>Q: 事前になにをやっているのかわからない
+<br/><br/>
+A: その場で決めている。
+</p></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h1>よくあるパターン</h1><ul><li>誰かが発表(ネタ提供)
+</li><li>Just In Tsukkomi
+</li><li>そのまま2時間
+</li></ul></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h1>よくあるパターン</h1><ul><li>コードリーディング
+<br><br>
+<small>最近は github とか sxr のおかげでコードリーディングしやすい</small>
+</li></ul></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h1>よくあるパターン</h1><ul><li>Scalaz
+</li></ul></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h1>懇親会</h1><p>ほぼ毎週
+</p></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h1>今後の目標</h1><p> #rpscala 女子部設立
+</p></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><h1>続きは秋葉原で</h1><p>今年最後の #rpscala!
+</p><p><a href="http://partake.in/events/8b637a2a-102d-41eb-8311-201d24f212ae" >Scala勉強会第63回 in 秋葉原</a>
+</p></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><br><br><br><center>#akskscala</center>
+</div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><h1>akskscala</h1><p>正式名称: <a href="http://seratch.github.com/Akasaka.scala/" >Akasaka.scala</a>(旧Daimon.scala)
+</p><p>主催:<a href="http://twitter.com/seratch" >@seratch</a>
+</p></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h1>日時</h1><p>毎週木曜
+</p></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h1>場所</h1><p>溜池山王(エムスリー)
+</p></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><h1>規模</h1><p>定員: 20人
+</p><p>数人~10人のことが多い
+</p></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><h1>スタイル</h1><p>前半: 読書会や発表など
+</p><p>後半: ハンズオン
+</p></div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h1>最近</h1><p><a href="http://twitter.github.com/scala_school/" >Scala School</a>読んでました
+</p></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><h1>来年は？</h1><ul><li>Scala言語仕様？
+</li><li>sbt?
+</li></ul></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h1>続きは赤坂で</h1><p>今年最後の #akskscala!
+</p><p><a href="http://atnd.org/events/23182" >Akasaka.scala 26 -&gt; “Scala School 6“</a>
+</p></div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h1>まとめ</h1><ul><li>気軽にどうぞ！
+</li></ul></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><br><br><br><center>ありがとうございました</center>
+</div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
