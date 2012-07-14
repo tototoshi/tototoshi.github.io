@@ -1,0 +1,16 @@
+h1 {
+    color: #00ff33;
+}
+
+.red {
+    color: red;
+}
+
+.white {
+    color: white;
+}
+
+
+div#slides {
+  background: url('../images/scalachan.jpg') no-repeat fixed right bottom ;
+}

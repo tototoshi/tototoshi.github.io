@@ -1,0 +1,345 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Play20 + Scala</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1342250214424" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><br /><br /><br /><br />
+<h1 id="Play20+%2B+Scala">Play20 + Scala</h1><a href="http://twitter.com/tototoshi/">@tototoshi</a>
+</div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1 id="About+me">About me</h1><img class="avatar size128" alt="Toshiyuki Takahashi" src="https://twimg0-a.akamaihd.net/profile_images/1601948797/twitter_icon_320_320_reasonably_small.jpg">
+<p>Toshiyuki Takahashi
+</p><ul><li><a href="http://twitter.com/tototoshi/">@tototoshi</a>
+</li><li>Scala好き
+</li></ul></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="%E4%BB%8A%E6%97%A5%E3%81%AE%E5%86%85%E5%AE%B9">今日の内容</h1><ul><li>感想を並べました。
+</li><li>Play2.0 最高！みたいな話ではない。
+</li><li>良いこと話してもしょうがないので悪いことを多めにしゃべります。
+</li></ul></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="%E4%BB%8A%E6%97%A5%E3%81%AE%E7%9B%AE%E6%A8%99">今日の目標</h1><ul><li>Play2.0 を disりすぎない
+</li></ul></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h1 id="Agenda">Agenda</h1><ul><li>Scalaから見たPlay2.0 (5min)
+</li><li>Controller (5min)
+</li><li>Model (5min)
+</li><li>View (5min)
+</li><li>Test (5min)
+</li><li>まとめ (5min)
+</li></ul></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h1 id="%E3%81%AA%E3%81%9C+Play20+%E3%81%8B">なぜ Play20 か</h1></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1 id="%E3%81%AA%E3%81%9C+Play20+%E3%81%8B">なぜ Play20 か</h1><ul><li>Scala使えるから
+</li></ul></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h1 id="%E3%81%AA%E3%81%9C+Scala+%E3%81%8B">なぜ Scala か</h1><p>(月並みな説明)
+</p></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h1 id="Scala+%E3%81%A7%E3%81%AE+Web+%E9%96%8B%E7%99%BA">Scala での Web 開発</h1><ul><li>Lift
+</li><li>Play
+</li><li>Javaのフレームワークを使用
+</li><li>unfiltered/scalatra + scalate + ORM
+</li></ul><p>Playが圧倒的にラク
+</p></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h1 id="Play20+%E3%81%AF%E3%83%A9%E3%82%AF">Play20 はラク</h1><p>ラクであることはたしかだ。
+</p></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><p>だがしかし…というのが今日のテーマ
+</p></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h1 id="Controller">Controller</h1></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h1 id="Controller">Controller</h1><ul><li>Request[_] を受け取って Results を返す関数
+</li><li>Action { ここに処理を記述  }
+</li></ul><pre><code class="prettyprint lang-scala">
+def list = Action { implicit request =&gt;
+  Ok(views.html....)
+}
+</code></pre><ul><li>implicit request はなんだかんだで使う(bindFromRequest,i18n…etc)ので基本書いておけばいい。
+</li></ul></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h1 id="Controller%28router%29">Controller(router)</h1><ul><li>増えてくると辛い…
+</li><li>※<a  href="https://groups.google.com/forum/#!msg/play-framework/M97vBcvvL58/216pTqm22HcJ">Form submission not working for POST but ok for GET method</a>
+</li></ul></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h1 id="Controller%28router%29">Controller(router)</h1><ul><li><a  href="https://github.com/playframework/Play20/blob/2.0.2/samples/scala/zentasks/app/controllers/Application.scala#L52-63">javascript router</a>
+</li><li>あまり使い込んでないけど便利かも
+</li></ul></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h1 id="Controller%28Form%29">Controller(Form)</h1><ul><li>入力値の受け取り、バリデーションの仕様
+</li><li>入れ子、リストなどにも対応している
+</li><li>そのまま ScalaTemplate に渡される。便利だが、密結合、再利用性が低いなどの問題あり。
+</li><li>2.1(たぶん)からはjodatimeが使えるなど細かい改善が多い。
+</li><li>テキストデータしか想定されていない？のでファイルアップロードなどは提供されていない。
+</li><li><a  href="http://d.hatena.ne.jp/tototoshi/20120407/1333795457">拡張方法</a>
+</li></ul></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h1 id="Controller%28BodyParser%29">Controller(BodyParser)</h1><ul><li>リクエストボディをパースする仕組み
+</li><li>明示的に使うのはjsonのリクエストを受け付けたり、ファイルアップロードを実装するとき。
+</li><li>trait BodyParser[+A] extends Function1[RequestHeader, Iteratee[Array[Byte], Either[Result, A]]]
+</li><li>さすがにこれは難しいわ
+</li><li><a  href="https://github.com/tototoshi/lift-json-play-module/blob/master/src/main/scala/com/github/tototoshi/play2/json/LiftJsonPlayModule.scala">例</a>
+</li></ul></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h1 id="Controller%28BodyParser%29">Controller(BodyParser)</h1><ul><li>入力値の受け取り、検証がFormとBodyParserに分かれるのが辛い。
+<br/>
+</li></ul><br/>
+</div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h1 id="Controller%28BodyParser%29">Controller(BodyParser)</h1><p>本当はこうしたい
+</p><br/>
+<pre><code class="prettyprint lang-scala">val myForm = Form(
+  &quot;name&quot; -&gt; nonEmptyText,
+  &quot;file&quot; -&gt; file(&quot;filename&quot;)
+)
+
+</code></pre></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h1 id="Controller%28BodyParser%29">Controller(BodyParser)</h1><p>リアル
+<br/>
+</p><pre><code class="prettyprint lang-scala">Action(parse.multipartFormData) { implicit request =&gt;
+  myForm.bindFromRequest(request)...
+.
+  request.body.file(&quot;filename&quot;).map { f =&gt;
+  ...
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h1 id="Controller%28Json%29">Controller(Json)</h1><ul><li>play.api.libs.json は自分でフォーマットを定義してやる必要がある。
+</li><li>めんどう…
+</li><li>2.1で改善されるんですね
+</li></ul></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h1 id="Controller%28Json%29">Controller(Json)</h1><pre><code class="prettyprint lang-scala">scala&gt; import play.api.libs.json._
+import play.api.libs.json._
+
+scala&gt; import play.api.libs.json.Generic._
+import play.api.libs.json.Generic._
+
+scala&gt; case class User(id: Long, name: String, age: Int)
+defined class User
+
+scala&gt; implicit def userFormat: Format[User] =
+         productFormat3(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;)(User.apply)(User.unapply)
+userFormat: play.api.libs.json.Format[User]
+
+scala&gt; Json.toJson(User(1, &quot;peter&quot;, 20))
+res0: play.api.libs.json.JsValue = {&quot;id&quot;:1,&quot;name&quot;:&quot;peter&quot;,&quot;age&quot;:20}
+
+scala&gt; Json.stringify(Json.toJson(User(1, &quot;peter&quot;, 20)))
+res1: String = {&quot;id&quot;:1,&quot;name&quot;:&quot;peter&quot;,&quot;age&quot;:20}
+</code></pre></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><h1 id="Controller%28Json%29">Controller(Json)</h1><p><a title="tototoshi/lift-json-play-module" href="https://github.com/tototoshi/lift-json-play-module">lift-json</a>使えば良いと思う
+</p><pre><code class="prettyprint lang-scala">import com.github.tototoshi.play2.json.LiftJson
+import net.liftweb.json._
+
+case class Person(id: Long, name: String, age: Int)
+
+object Application extends Controller with LiftJson {
+
+  implicit val formats = DefaultFormats
+
+  def get = Action { implicit request =&gt;
+    Ok(Extraction.decompose(Person(1, &quot;ぱみゅぱみゅ&quot;, 19)))
+  }
+
+  def post = Action(liftJson) { implicit request =&gt;
+    Ok(request.body.extract[Person].name)
+  }
+
+}
+</code></pre></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h1 id="Controller%E3%81%AE%E6%8B%A1%E5%BC%B51">Controllerの拡張1</h1><ul><li><a  href="http://www.playframework.org/documentation/2.0/ScalaActionsComposition">ActionsComposition</a>
+</li><li>もうちょっと手軽な仕組みを…
+</li><li>ServletFilter的なものが欲しい(Globalじゃなくて)
+</li></ul></div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><h1 id="Controller%E3%81%AE%E6%8B%A1%E5%BC%B52">Controllerの拡張2</h1><ul><li>In: BodyParserを作る
+</li><li>Out: Writeable,ContentTypeOfを実装する
+</li></ul></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h1 id="Model">Model</h1></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h1 id="dbplugin">dbplugin</h1><ul><li>コネクションリーク!
+</li><li>コネクションリーク!
+</li><li>コネクションリーク!
+</li><li>コネクションリーク!
+</li><li>dbplugin=disabled
+</li></ul></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><h1 id="Evolutions">Evolutions</h1><ul><li>コネクションリーク！
+</li><li>inconsistent status!
+</li><li>なんだか動きが怪しいぞ…
+</li><li>evolutions=disabled
+</li><li>本番環境でやったら…お…おそろしい….
+</li></ul></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><h1 id="Anorm">Anorm</h1><ul><li>使わないのが無難
+</li><li><a title="play2.0 の anorm の問題点をまとめてみる。間違いがあったらコメントしてもらえると助かります。問題がなければ本家に対してまとまった形で報告するつもりです。最終的な目標は anorm の改善です。 — Gist" href="https://gist.github.com/2470715">play2.0 の anorm の問題点をまとめてみる。</a>
+</li></ul></div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h1 id="Anorm%E4%BB%A5%E5%A4%96%E3%81%AE%E9%81%B8%E6%8A%9E%E8%82%A2">Anorm以外の選択肢</h1><ul><li>Squeryl
+</li><li>SLICK(ScalaQuery)
+</li><li>O/R Broker
+</li><li>Scalikejdbc
+</li></ul></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><h1 id="Squeryl">Squeryl</h1><ul><li>すくぅいれる
+</li><li>ORMとしては一番良い？
+</li><li>(個人的にはあまり好きではないが)
+</li></ul></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h1 id="SLICK%28ScalaQuery%29">SLICK(ScalaQuery)</h1><ul><li>Typesafe Stack!
+</li><li>Typesafe DSL
+</li><li>かっこいい
+</li><li>でもまだ仕事で使うには辛い(Tuple22問題など)
+</li></ul></div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h1 id="SLICK%28ScalaQuery%29">SLICK(ScalaQuery)</h1><ul><li>将来的にはなかなかすごそうだ (<a  href="https://github.com/slick/slick/blob/master/src/test/scala/scala/slick/test/jdbc/SimpleTest.scala#L101-128">String Interpolation</a> API, Macro の利用)
+</li><li><a  href="http://skillsmatter.com/podcast/scala/scala-language-integrated-connection-kit">Scala Language Integrated Connection Kit - Milestone 1</a>
+<br/><br/>
+</li></ul><pre><code class="prettyprint lang-scala">object Coffee extends DBTable (
+  &quot;jdbc:postgresql://localhost/coffeeshop&quot;,
+  &quot;coffee&quot;
+)
+</code></pre></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><h1 id="O%2FR+Broker">O/R Broker</h1><p>ごめんなさい。あまり知りません。
+</p></div>
+      </div><div class="content" id="slide-34">
+       <div class="container"><h1 id="Scalikejdbc">Scalikejdbc</h1><ul><li><a title="seratch/scalikejdbc" href="https://github.com/seratch/scalikejdbc">seratch/scalikejdbc</a>
+</li><li>play-plugin あり
+</li><li>mapper-generator
+</li><li>さようならdbplugin
+</li><li><a  href="http://www.cakesolutions.net/teamblogs/2012/06/29/this-week-in-scala-29062012/">This week in Scala 29/06/2012</a>
+</li></ul></div>
+      </div><div class="content" id="slide-35">
+       <div class="container"><h1 id="View">View</h1></div>
+      </div><div class="content" id="slide-36">
+       <div class="container"><h1 id="ScalaTemplate">ScalaTemplate</h1><ul><li>Scalaっぽい書き方ができるがScalaではない
+</li><li>ScalaっぽいものをコンパイルしてScalaにして、さらにコンパイル
+</li></ul></div>
+      </div><div class="content" id="slide-37">
+       <div class="container"><h1 id="ScalaTemplate">ScalaTemplate</h1><ul><li>実装がテキトー
+</li><li>仕様どうなってんの？
+</li><li>Generics使いたい
+</li><li>Formと密結合すぎるかも
+</li></ul></div>
+      </div><div class="content" id="slide-38">
+       <div class="container"><h1 id="ScalaTemplate">ScalaTemplate</h1><p>Q.次のうちでコンパイルが通るものは？
+</p><ol><li>@if(true) 1 else 2
+</li><li>@if (true) 1 else 2
+</li><li>@if (true) { 1 } else { 2 }
+</li><li>@if(true) { 1 } else { 2 }
+</li><li>@for(i &lt;- 1 to 10) { …}
+</li><li>@for (i &lt;- 1 to 10) { …}
+</li></ol></div>
+      </div><div class="content" id="slide-39">
+       <div class="container"><h1 id="ScalaTemplate">ScalaTemplate</h1><p>吐かれるHTMLがわからない。
+</p><ul><li>わからなくて良い?
+</li><li>Liftとは真逆の方向性
+</li></ul></div>
+      </div><div class="content" id="slide-40">
+       <div class="container"><h1 id="FieldConstructor">FieldConstructor</h1><ul><li>デザインはFieldConstructorで分離、モジュール化
+</li><li>bootstrapと組み合わせやすい
+</li><li><a  href="http://d.hatena.ne.jp/shinobu_aoki/20120302/1330716992">Play 2.0でBootstrap 2.0対応</a>
+</li></ul></div>
+      </div><div class="content" id="slide-41">
+       <div class="container"><h1 id="i18n">i18n</h1><p><a  href="http://dev.classmethod.jp/server-side/play-yabe-3/">国際化(i18n)対応</a>
+</p></div>
+      </div><div class="content" id="slide-42">
+       <div class="container"><h1 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3">その他のテンプレートエンジン</h1><ul><li>(Playを拡張すれば)使えることは使える
+</li><li>ただし、Formとの連携まで考えると辛い。
+</li></ul></div>
+      </div><div class="content" id="slide-43">
+       <div class="container"><h1 id="Test">Test</h1></div>
+      </div><div class="content" id="slide-44">
+       <div class="container"><h1 id="Test">Test</h1><ul><li>「テスト書かない人とかいるんですか？？」→テスト書かないのは人間レベルに達していない
+</li><li>静的型言語はテストの量を減ると言われるが、テストを書かなくても良いことではない。
+</li></ul></div>
+      </div><div class="content" id="slide-45">
+       <div class="container"><h1 id="Scala+%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF">Scala のテストフレームワーク</h1><ul><li><a  href="http://etorreborre.github.com/specs2/">specs2</a> 人気、黒魔術
+</li><li><a  href="http://www.scalatest.org/">ScalaTest</a> 無難っぽい、いろいろな書き方ができる
+</li><li><a  href="http://code.google.com/p/scalacheck/">scalacheck</a> ランダムテスト
+</li></ul></div>
+      </div><div class="content" id="slide-46">
+       <div class="container"><h1 id="Specs2+or+ScalaTest%3F">Specs2 or ScalaTest?</h1><ul><li>たぶんどっちでも良い
+</li><li><a  href="http://d.hatena.ne.jp/seratch2/20120401/1333269471">Play20 で ScalaTest を使ってテストを書く方法</a>
+</li></ul></div>
+      </div><div class="content" id="slide-47">
+       <div class="container"><h1 id="Fakes">Fakes</h1><ul><li>FakeApplication
+</li><li>FakeRequest
+</li><li>FakeHeaders
+</li><li>TestBrowser
+</li><li>TestServer
+</li></ul></div>
+      </div><div class="content" id="slide-48">
+       <div class="container"><h1 id="Test+Helpers">Test Helpers</h1><ul><li>routeAndCall
+</li><li>inMemoryDatabase
+</li></ul></div>
+      </div><div class="content" id="slide-49">
+       <div class="container"><h1 id="FakeApplication">FakeApplication</h1><pre><code class="prettyprint lang-scala">running(FakeApplication()) {
+...
+}
+</code></pre><ul><li>設定を変えたり、inMemoryDatabaseを使ってテストができたりする
+</li><li>いちいち書くのがめんどう。
+</li><li>いちいちプラグイン全てをリロード
+</li><li>プラグインがリソースリークさせていたりすると…
+</li></ul></div>
+      </div><div class="content" id="slide-50">
+       <div class="container"><h1 id="Dependency+Injection">Dependency Injection</h1><ul><li>DIコンテナは不要
+</li><li>CakePattern(trait + <span class="red">self-type annotation</span>)
+</li><li><a  href="http://julien.richard-foy.fr/blog/2011/11/26/dependency-injection-in-scala-with-play-2-it-s-free/">Dependency injection in Scala with Play 2: it’s free</a>
+</li></ul></div>
+      </div><div class="content" id="slide-51">
+       <div class="container"><h1 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h1></div>
+      </div><div class="content" id="slide-52">
+       <div class="container"><h1 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h1><p>Play20 は
+</p><ul><li>微妙なモジュールが多い
+</li><li>Pluggableで良かった
+</li><li>実装がテキトー
+</li><li>Bug耐性
+</li><li>スリル感
+</li></ul></div>
+      </div><div class="content" id="slide-53">
+       <div class="container"><h1 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h1><ul><li>実戦不足。揉まれてない。
+</li><li>がんばりましょう
+</li></ul></div>
+      </div><div class="content" id="slide-54">
+       <div class="container"><h1 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h1><ul><li>それでもPlay2.0を使う
+</li><li>Scalaですから
+</li></ul></div>
+      </div><div class="content" id="slide-55">
+       <div class="container"><h1 id="Play2.0+%E3%81%8B%E3%82%89%E5%91%BD%E3%82%92%E5%AE%88%E3%82%8B">Play2.0 から命を守る</h1><ul><li>MLを読む
+</li><li>(疑いながら)ドキュメントを読む
+</li><li>ソースを読む
+</li><li>直せそうだったらPullRequest
+</li></ul></div>
+      </div><div class="content" id="slide-56">
+       <div class="container"><p>ご清聴ありがとうございました
+</p></div>
+      </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/custom.js?1342250215137"></script>
+      </body>
+    </html>
