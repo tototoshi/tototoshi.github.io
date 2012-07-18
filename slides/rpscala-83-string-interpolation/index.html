@@ -7,7 +7,7 @@
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/show.js"></script>
         <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
-        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1342611969930" />
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1342626599268" />
       <script type="text/javascript"><!--
         window.onload=function() { prettyPrint(); };
       --></script>
@@ -31,7 +31,7 @@
 </p></div>
       </div><div class="content" id="slide-2">
        <div class="container"><h1 id="ruby+%E3%81%A7%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%82%84%E3%81%A4">ruby でよくあるやつ</h1><pre><code class="prettyprint lang-ruby">age = 10
-puts &quot;Bob is #{age} year old&quot; #&gt; Bob is 10 year old
+puts &quot;Bob is #{age} years old&quot; #&gt; Bob is 10 years old
 </code></pre></div>
       </div><div class="content" id="slide-3">
        <div class="container"><h1 id="scala+%E3%81%A7%E3%81%AF%28%E4%BB%8A%E3%81%BE%E3%81%A7%29">scala では(今まで)</h1><pre><code class="prettyprint lang-scala">scala&gt; val n = 10
@@ -89,11 +89,12 @@ id ”””text0${ expr1 }text1 … ${ exprn }textn”””
 defined class URLEncodedStringContext
 </code></pre></div>
       </div><div class="content" id="slide-10">
-       <div class="container"><h1 id="%E6%8B%A1%E5%BC%B5%E3%81%A7%E3%81%8D%E3%82%8B">拡張できる</h1><pre><code class="prettyprint lang-scala">scala&gt; url&quot;encoded: ${akiba}&quot;
-res10: String = encoded: %E7%A7%8B%E8%91%89%E5%8E%9F
+       <div class="container"><h1 id="%E6%8B%A1%E5%BC%B5%E3%81%A7%E3%81%8D%E3%82%8B">拡張できる</h1><pre><code class="prettyprint lang-scala">scala&gt; val akiba = &quot;秋葉原&quot;
+akiba: String = 秋葉原
 
-scala&gt; url&quot;&quot;&quot;today: ${&quot;2012/07/18&quot;}, encoded: ${akiba}&quot;&quot;&quot;
-res11: String = today: 2012%2F07%2F18, encoded: %E7%A7%8B%E8%91%89%E5%8E%9F
+scala&gt; url&quot;encoded: ${akiba}&quot;
+res0: String = encoded: %E7%A7%8B%E8%91%89%E5%8E%9F
+
 </code></pre></div>
       </div><div class="content" id="slide-11">
        <div class="container"><h1 id="in+SLICK">in SLICK</h1><p><a  href="https://github.com/slick/slick/blob/master/src/test/scala/scala/slick/test/jdbc/SimpleTest.scala#L101-128">String interpolation API</a>
