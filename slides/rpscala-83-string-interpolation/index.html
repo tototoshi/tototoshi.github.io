@@ -1,0 +1,109 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>rpscala-83-string-interpolation</title>
+        <link type="text/css" rel="stylesheet" href="assets/css/show.css" />
+        <link type="text/css" rel="stylesheet" href="assets/css/prettify.css" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link type="text/css" rel="stylesheet" href="css/custom.css?1342611969930" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1 id="String+interpolation+in+scala+2.10">String interpolation in scala 2.10</h1><p><a  href="http://twitter.com/tototoshi">@tototoshi</a>
+</p></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><pre><code class="">interpolation
+【名】
+
+    〔他のものに〕挿入すること、差し挟むこと
+    〔原文の〕改ざん、不正な改変
+    〔付け加えられた〕語句、挿入句
+    《数学》補間、内挿
+</code></pre><br/>
+<p>簡単に言うと、文字列の中に変数を埋め込めるってこと
+</p></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1 id="ruby+%E3%81%A7%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E3%82%84%E3%81%A4">ruby でよくあるやつ</h1><pre><code class="prettyprint lang-ruby">age = 10
+puts &quot;Bob is #{age} year old&quot; #&gt; Bob is 10 year old
+</code></pre></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1 id="scala+%E3%81%A7%E3%81%AF%28%E4%BB%8A%E3%81%BE%E3%81%A7%29">scala では(今まで)</h1><pre><code class="prettyprint lang-scala">scala&gt; val n = 10
+n: Int = 10
+
+scala&gt; &quot;Bob is &quot; + n + &quot; years old&quot;
+res0: String = Bob is 10 years old
+</code></pre></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h1 id="scala+%E3%81%A7%E3%81%AF%28%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%29">scala では(これから)</h1><pre><code class="prettyprint lang-scala">scala&gt; val n = 10
+n: Int = 10
+
+scala&gt; s&quot;Bob is $n years old&quot;
+res2: String = Bob is 10 years old
+</code></pre></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h1 id="format+%E3%82%82%E3%81%A7%E3%81%8D%E3%82%8B">format もできる</h1><pre><code class="prettyprint lang-scala">scala&gt; f&quot;Bob is $n%03d years old&quot;
+res4: String = Bob is 010 years old
+</code></pre></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h1 id="%E6%AD%A3%E4%BD%93">正体</h1><pre><code class="prettyprint lang-scala">scala&gt; val n = 10
+n: Int = 10
+
+scala&gt; s&quot;Bob is $n is years old&quot;
+res0: String = Bob is 10 is years old
+
+scala&gt; new StringContext(&quot;Bob is &quot;, &quot; is years old&quot;).s(n)
+res1: String = Bob is 10 is years old
+</code></pre></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><p>文字列が、StringContext というオブジェクトに変換され、そのメソッドを呼んでいる
+</p></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h1 id="%E5%A4%89%E6%8F%9B%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">変換パターン</h1><pre><code class="">id ”text0${ expr1 }text1 … ${ exprn }textn”
+id ”””text0${ expr1 }text1 … ${ exprn }textn”””
+</code></pre><p>↓
+</p><pre><code class="">StringContext(”””text0”””, …, ”””textn”””).id(expr1, …, exprn)
+</code></pre></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h1 id="%E6%8B%A1%E5%BC%B5%E3%81%A7%E3%81%8D%E3%82%8B">拡張できる</h1><pre><code class="prettyprint lang-scala">scala&gt; implicit class URLEncodedStringContext(s: StringContext) {
+     |   def url(params: Any*) = {
+     |     if (params.isEmpty) {
+     |       &quot;&quot;
+     |     } else {
+     |       var res = &quot;&quot;
+     |       for (i &lt;- (0 until s.parts.size - 1)) {
+     |         res += s.parts(i)
+     |         res += java.net.URLEncoder.encode(params(i).toString, &quot;utf-8&quot;)
+     |       }
+     |       res += s.parts.last
+     |       res
+     |     }
+     |   }
+     | }
+defined class URLEncodedStringContext
+</code></pre></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h1 id="%E6%8B%A1%E5%BC%B5%E3%81%A7%E3%81%8D%E3%82%8B">拡張できる</h1><pre><code class="prettyprint lang-scala">scala&gt; url&quot;encoded: ${akiba}&quot;
+res10: String = encoded: %E7%A7%8B%E8%91%89%E5%8E%9F
+
+scala&gt; url&quot;&quot;&quot;today: ${&quot;2012/07/18&quot;}, encoded: ${akiba}&quot;&quot;&quot;
+res11: String = today: 2012%2F07%2F18, encoded: %E7%A7%8B%E8%91%89%E5%8E%9F
+</code></pre></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h1 id="in+SLICK">in SLICK</h1><p><a  href="https://github.com/slick/slick/blob/master/src/test/scala/scala/slick/test/jdbc/SimpleTest.scala#L101-128">String interpolation API</a>
+</p></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h1 id="kwsk">kwsk</h1><p><a  href="https://docs.google.com/document/d/1NdxNxZYodPA-c4MLr33KzwzKFkzm9iW9POexT9PkJsU/edit?hl=en_US&amp;pli=1">SIP11</a>
+</p></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
