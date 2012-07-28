@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.tototoshi</groupId>
+    <artifactId>mvnsearch_2.9.1</artifactId>
+    <packaging>jar</packaging>
+    <description>mvnsearch</description>
+    <version>0.1.2</version>
+    <name>mvnsearch</name>
+    <organization>
+        <name>com.github.tototoshi</name>
+    </organization>
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.9.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scopt</groupId>
+            <artifactId>scopt_2.9.1</artifactId>
+            <version>2.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2_2.9.1</artifactId>
+            <version>1.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-sbt</groupId>
+            <artifactId>launcher-interface_2.9.1</artifactId>
+            <version>0.11.3</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>sonatypepublic</id>
+            <name>sonatype-public</name>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>ScalaToolsMaven2Repository</id>
+            <name>Scala-Tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+</project>
