@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>rpscala-92-scala-binary-version</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+                <style type="text/css">
+                  .reveal h2 {
+                      text-transform: none;
+                  }
+                </style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+<section>
+  <h2>sbt 0.12.x の binary version について</h2>
+</section>
+
+<section>
+  <h2>今日の内容</h2>
+  <ul>
+      <li>binary version ってなんだ</li>
+      <li>ライブラリ使用者はどうすればいいんだ</li>
+      <li>ライブラリ作者はどうすればいいんだ</li>
+  </ul>
+
+</section>
+
+<section>
+<h2>scala のバイナリ互換性</h2>
+<ul>
+    <li>scala ではソースコードの互換性のほか、バイナリ互換性に気をつける必要がある</li>
+    <li>例えば 2.8系と 2.9系ではバイナリ互換性がない。</li>
+    <li>よって、2.8系向けにコンパイルされたライブラリは 2.9 系のプロダクトに使用することはできない</li>
+    <li>使用すると -> NoClassFound, NoMethodFound 的なエラーで死ぬ</li>
+</ul>
+</section>
+
+<section>
+<h2>scala のライブラリは Java と違い、scala のバージョン込みで管理されている</h2>
+<ul>
+    <li>libraryDependencies += "com.example" % "utility_2.9.1" % "version"</li>
+    <li>libraryDependencies += "com.example" %% "utility" % "version"</li>
+
+    <hr />
+    <dl>
+        <dt>%%</dt>
+        <dd>今使用しているScala のバージョンにあったライブラリが使用できる</dd>
+    </dl>
+</ul>
+
+</section>
+
+<section>
+<h2>今までが sbt 0.11.x までの話</h2>
+</section>
+
+<section>
+<h2>ここからが sbt 0.12.x の話</h2>
+</section>
+
+<section>
+<h2>binary version <- NEW!!</h2>
+<ul>
+    <li>
+      <a href="http://eed3si9n.com/ja/node/57">sbt 0.12.0 の変更点 | eed3si9n</a>
+    </li>
+    <li>知らないと多分はまる。</li>
+    <li>難しい話ではないけれど、まだドキュメントにちゃんと書かれていなかったりしてハマる(ハマリました)</li>
+    <li>これから、scala 2.10, Play 2.1 対応をする際に知っておいたほうが良い。</li>
+</ul>
+</section>
+
+<section>
+<h2>binary version とは？</h2>
+<ul>
+    <li>同じ binary version ならば、バイナリ互換性がある</li>
+</ul>
+<a href="https://twitter.com/xuwei_k/status/270901545237897216">Twitter / xuwei_k: たしか2.9系も2.10系と同じようにバイナリ互換あ ...</a>
+<a href="https://twitter.com/kxbmap/status/270902196747509760">Twitter / kxbmap: 2.10系ってTypesafeが作った例のバイナリ互 ...</a>
+</section>
+
+
+<section>
+<h2>binary version の振り方</h2>
+<ul>
+    <li>binary version は &lt;major&gt;.&lt;minor&gt; というバージョンの振り方。2.10.0 の場合は 2.10 (つまり scala 2.10 の間はバイナリ互換性は保証してくれる) </li>
+    <li>2.9 以前のものについては 2.9.1, 2.9.2 など、フルバージョンをそのままバイナリバージョンとする。</li>
+</ul>
+
+</section>
+
+<section>
+<h2>RC期間は例外</h2>
+<ul>
+    <li>2.10.0-RCx の今はまだ 2.10.0-final とのバイナリ互換性は保証されていない。 binary version は 2.10.0-RCx となる。</li>
+</ul>
+
+
+ まだ RC ですし
+
+</section>
+
+<section>
+<h2>RC期間は cross CrossVersion.full を使う(ライブラリ使用者)</h2>
+<a href="https://twitter.com/sgodbillon/status/269825436400373760">Twitter / sgodbillon: #SBT protip: until Scala 2.10 ... </a>
+
+</section>
+
+
+<section>
+<h2>RC期間は scalaBinaryVersion を使用する(ライブラリ作成者)</h2>
+<ul>
+  <li>RC期間中、0.12.x を使っているなら scalaBinaryVersion := "2.10.0-RCx" 必須！</li>
+</ul>
+
+<ul>
+    <li>
+        <a href="http://grokbase.com/t/gg/scala-internals/12ac2bfgx4/scala-2-10-0-rc1-staged">
+            [scala-internals] Scala 2.10.0-RC1 Staged - Grokbase
+        </a>
+    </li>
+    <li>
+        <a href="https://twitter.com/jsuereth/statuses/245350453699833857">Twitter / jsuereth: @JorgeO scalaBinaryVersion ...</a>
+    </li>
+    <li>
+        <a href="https://twitter.com/seratch/status/270086522064228352">Twitter / seratch: scalaVersion := "2.10.0-RC2" ... </a>
+    </li>
+</ul>
+
+</section>
+
+
+
+<section>
+  <h2>もっと詳しく</h2>
+  <a href="http://www.scala-sbt.org/release/docs/Getting-Started/Library-Dependencies.html">Library Dependencies — sbt Documentation </a>
+  <a href="http://www.scala-sbt.org/release/docs/Detailed-Topics/Cross-Build.html">Cross-building — sbt Documentation </a>
+
+</section>
+
+<section>
+ <h2>まとめ</h2>
+ <ul>
+     <li>binary version について知っておきましょう。</li>
+     <li>2.10.0 が出たら sbt 0.12.0 を使ったほうが良さそう。0.11.xと0.12.xを使っている人がまじると混乱しそう。</li>
+     <li>sbtのドキュメントはたまに読みなおそう。</li>
+ </ul>
+</section>
+
+<section>
+  おわり
+</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
