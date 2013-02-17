@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var showOnly = function (id) {
+    var showOnly = function (id, dir) {
 
         $('section')
             .filter(function(index) { return $(this).attr('id') != id; })
@@ -9,6 +9,14 @@ $(document).ready(function () {
         $('section')
             .filter(function(index) { return $(this).attr('id') == id; })
             .show();
+
+        if (dir == -1) {
+            $('.incr').show();
+        }
+
+        if (dir == 1) {
+            $('.incr').hide();
+        }
 
     };
 
@@ -19,10 +27,14 @@ $(document).ready(function () {
         return location.hash.substring(1);
     };
 
-    var displayOneMoreItem = function () {
-        var itemsInvisible = $('section' + '#' + getPageIndex() + ' .incr').filter(function (index) {
+    var getItemsInvisible = function () {
+        return $('section' + '#' + getPageIndex() + ' .incr').filter(function (index) {
             return $(this).css('display') == 'none';
         });
+    };
+
+    var displayOneMoreItem = function () {
+        var itemsInvisible = getItemsInvisible();
 
         if (itemsInvisible.size() > 0) {
             var itemToShow = itemsInvisible[0];
@@ -40,6 +52,21 @@ $(document).ready(function () {
         return false;
     };
 
+    var hideOneMoreItem = function () {
+        var itemsVisible = $('section' + '#' + getPageIndex() + ' .incr').filter(function (index) {
+            return $(this).css('display') != 'none';
+        });
+
+        if (itemsVisible.size() > 0) {
+            var lastIndex = itemsVisible.size() - 1;
+            var itemToShow = itemsVisible[lastIndex];
+            var tagName = itemToShow.tagName;
+            $(itemToShow).css({'display': 'none'});
+            return true;
+        }
+        return false;
+    };
+
     var showNewPage = function (dir) {
         var newPageIndex = parseInt(getPageIndex()) + dir;
 
@@ -47,7 +74,7 @@ $(document).ready(function () {
             return;
         }
 
-        showOnly(newPageIndex);
+        showOnly(newPageIndex, dir);
 
         location.hash = '#' + newPageIndex;
     };
@@ -76,8 +103,16 @@ $(document).ready(function () {
                 location.href = './';
             } else {
 
-                if (displayOneMoreItem()) {
-                    return;
+                if (dir == 1) {
+                    if (displayOneMoreItem()) {
+                        return;
+                    }
+                }
+
+                if (dir == -1) {
+                    if (hideOneMoreItem()) {
+                        return;
+                    }
                 }
 
                 showNewPage(dir);
@@ -97,7 +132,7 @@ $(document).ready(function () {
     var maxPageIndex = function () {
         var max = 0;
         $('section').each(function () {
-            if ($(this).attr('id') > max) {
+            if (parseInt($(this).attr('id')) > max) {
                 max = $(this).attr('id');
             }
         });
