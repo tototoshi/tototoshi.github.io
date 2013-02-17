@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>Simple Slides</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- customize -->
+        <link rel="stylesheet" href="css/custom.css" />
+        <script type="text/javascript" src="js/custom.js"></script>
+
+        <!-- syntax highlighter -->
+        <link type="text/css" rel="stylesheet" media="screen,projection" href="shjs-0.6/css/sh_bright.min.css">
+        <script type="text/javascript" src="shjs-0.6/sh_main.min.js"></script>
+    </head>
+    <body onload="sh_highlightDocument('shjs-0.6/lang/', '.js');">
+
+        <section>
+            <h1>Simple slides Example</h1>
+        </section>
+
+        <section>
+            <h1>List example</h1>
+            <ul>
+                <li class="incr">Toshiyuki Takahashi</li>
+                <li class="incr">Twitter: <a href="//twitter.com/tototoshi">@tototoshi</a></li>
+                <li class="incr">Github: <a href="//github.com/tototoshi">github.com/tototoshi</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Syntax Highlight</h1>
+            <pre class="sh_scala">
+object Main {
+  def main(args: Array[String]): Unit = {
+    println("Hello")
+  }
+}
+            </pre>
+        </section>
+        <section>
+            <h1>Thanks!</h1>
+        </section>
+
+    </body>
+</html>
