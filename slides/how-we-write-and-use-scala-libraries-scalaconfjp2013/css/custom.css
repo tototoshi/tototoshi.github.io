@@ -1,0 +1,10 @@
+body {
+    background: url('../images/m3_logo.gif') no-repeat fixed right bottom;
+    background-position: 95% 95%;
+}
+h1 { line-height: 1.2em; min-height: 76px; }
+.red { color: #FF0000; }
+.blue { color: #0000FF; }
+.yellow { color: #FFFF00; }
+.green { color: #13FF17; }
+th, td { padding: 0 30px 0 30px; }

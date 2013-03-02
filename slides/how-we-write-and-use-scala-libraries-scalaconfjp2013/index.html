@@ -1,0 +1,377 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>How we write and use Scala libraries not to cry</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- customize -->
+        <link rel="stylesheet" href="css/custom.css" />
+        <script type="text/javascript" src="js/custom.js"></script>
+
+        <!-- syntax highlighter -->
+        <link type="text/css" rel="stylesheet" media="screen,projection" href="shjs-0.6/css/sh_bright.min.css">
+        <script type="text/javascript" src="shjs-0.6/sh_main.min.js"></script>
+    </head>
+    <body onload="sh_highlightDocument('shjs-0.6/lang/', '.js');">
+
+        <section>
+            <h1>How we write and use Scala libraries <span class="blue incr">not to cry</span></h1>
+        </section>
+
+        <section>
+            <h1>About me</h1>
+            <ul>
+                <li class="incr">Name: Toshiyuki Takahashi</li>
+                <li class="incr">Working at M3,inc.</li>
+                <li class="incr">Twitter: <a href="//twitter.com/tototoshi">@tototoshi</a></li>
+                <li class="incr">Github: <a href="//github.com/tototoshi">github.com/tototoshi</a></li>
+                <li class="incr"><a href="//www.scala-users.org/shibuya/index.php?title=%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8">#rpscala</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>M3,inc.</h1>
+            <div>
+                <a href="//www.m3.com">
+                    <img src="images/m3com.png" class="" alt="" height="400px"/>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h1>M3,inc.</h1>
+            <div>
+                We are using:
+                <div id="" class="">
+                    <ul style="list-style: none">
+                        <li class="incr" style="float: left;"><img src="images/Java_Duke.gif" class="" alt="Java" height="80px"/></li>
+                        <li class="incr" style="float: left;"><img src="images/ruby.jpg" class="" alt="Ruby" height="80px"/></li>
+                        <li class="incr" style="float: left;"><img src="images/scala_logo.png" class="" alt="Scala" height="80px"/></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>M3 & Scala</h1>
+            <ul>
+                <li class="incr">Unfiltered</li>
+                <li class="incr">Scalatra</li>
+                <li class="incr"><span class="red">Playframework</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>M3 & Scala</h1>
+            <ul>
+                <li class="incr"><a href="//github.com/seratch/scalikejdbc">seratch/scalikejdbc</a></li>
+                <li class="incr"><a href="//github.com/t2v/play20-auth">t2v/play20-auth</a></li>
+                <li class="incr"><a href="//github.com/t2v/holidays">t2v/holidays</a></li>
+                <li class="incr"><a href="//github.com/t2v/stackable-controller">t2v/stackable-controller</a></li>
+                <li class="incr"><a href="//github.com/tototoshi/lift-json-play-module">tototoshi/lift-json-play-module</a></li>
+                <li class="incr"><a href="//github.com/tototoshi/play-json4s">tototoshi/play-json4s</a></li>
+                <li class="incr"><a href="//github.com/tototoshi/scala-csv">tototoshi/scala-csv</a></li>
+                <li class="incr"><a href="//github.com/tototoshi/play-joda-routes-binder">tototoshi/play-joda-routes-binder</a></li>
+                <li class="incr"><a href="//github.com/tototoshi/play-ascii-art-plugin">tototoshi/play-ascii-art-plugin</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Lots of libraries</h1>
+
+            <ul>
+                <li class="incr">useful!</li>
+                <li class="incr">but ...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Three Problems in Scala</h1>
+
+            <ul>
+                <li class="incr">Compilation time</li>
+                <li class="incr red">Binary Compatibility</li>
+                <li class="incr red">Ecosystem</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1 style="margin-top: 30%;" class="green">Theme 1</h1>
+            <h2>Binary Compatibility</h1>
+        </section>
+
+        <section>
+            <h1>In Java</h1>
+            <pre class="sh_xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;org.mod4j.org.apache.commons&lt;/groupId&gt;
+  &lt;artifactId&gt;lang&lt;/artifactId&gt;
+  &lt;version&gt;2.1.0&lt;/version&gt;
+&lt;/dependency&gt;
+<pre>
+        </section>
+
+        <section>
+            <h1>In Scala</h1>
+            <pre class="sh_xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.github.seratch&lt;/groupId&gt;
+  &lt;artifactId&gt;scalikejdbc_2.9.1&lt;/artifactId&gt;
+  &lt;version&gt;1.4.3&lt;/version&gt;
+&lt;/dependency&gt;
+            </pre>
+            ArtifactId includes Scala version
+        </section>
+
+        <section>
+            <h1>Binary Compatibility</h1>
+
+            <p>
+                Prevents us from fast migration to newer version of Scala <span class="incr">until <span class="red">all libraries our products depends on</span> supports newer version.</span>
+            </p>
+            <p>
+                <span class="incr yellow">Be careful!</span>
+            </p>
+        </section>
+
+        <section>
+            <h1>Binary Compatibility</h1>
+
+            <ul>
+                <li class="incr"><span class="red">Can't use libararies build against Scala 2.9.2 in Scala 2.10.0.</span></li>
+                <li class="incr"><span class="red">Can't use libararies build against Scala 2.8.2 in Scala 2.9.2.</span></li>
+                <li class="incr"><span class="blue">Can use libararies build against Scala 2.9.1 in Scala 2.9.2.</span></li>
+                <li class="incr">...<span class="incr">(´д`) <span class="incr">...confusing</span></li></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1><span class="incr">S</span><span class="incr">B</span><span class="incr">T</span></h1>
+            <a href="//cookpad.com/recipe/1845585"><img src="images/sbt.jpg" alt="sbt" style="margin: 0 auto; display: block;"/></a>
+        </section>
+
+        <section>
+            <h1>Cross Compiling</h1>
+
+            <pre class="sh_scala">
+crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.0")
+            </pre>
+
+            <pre class="sh_sh">
+> + compile
+> + publish
+            </pre>
+
+            Compile and publish in multiple versions
+        </section>
+
+        <section>
+            <h1>Source Dependencies</h1>
+            <pre class="sh_scala" style="font-size: 28px; line-height: 1.2em;">
+import sbt._, sbt.Keys._
+object ScalaProjectBuild extends Build {
+  lazy val scalaProject = Project(
+    id = "scala-project",
+    base = file("."),
+    settings = Project.defaultSettings ++ Seq(
+      // add other settings here
+    )
+  ).dependsOn(
+    uri("git://github.com/tototoshi/scala-csv.git#0.7.0")
+  )
+}
+            </pre>
+
+
+        </section>
+
+        <section>
+            <h1>Scala Binary Version <span class="red" style="font-size: 24px; padding-bottom: 10px;">New!!</span></h1>
+            <p>
+                <span class="incr">from SBT 0.12</span>
+            </p>
+
+            <p>
+                <span class="incr">ArtifactId now includes <span class="blue">not Scala version</span> <span class="red">but Scala binary version</span>.</span>
+            </p>
+        </section>
+
+        <section>
+            <pre class="sh_xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.github.seratch&lt;/groupId&gt;
+  &lt;artifactId&gt;scalikejdbc_2.9.1&lt;/artifactId&gt;
+  &lt;version&gt;1.4.3&lt;/version&gt;
+&lt;/dependency&gt;
+            </pre>
+
+            <pre class="sh_xml">
+&lt;dependency&gt;
+  &lt;groupId&gt;com.github.seratch&lt;/groupId&gt;
+  &lt;artifactId&gt;scalikejdbc_2.10&lt;/artifactId&gt;
+  &lt;version&gt;1.4.3&lt;/version&gt;
+&lt;/dependency&gt;
+            </pre>
+
+        </section>
+
+        <section>
+            <h1></h1>
+            <table width="" cellspacing="" cellpadding="" border="0">
+                <tr>
+                    <th>Scala version</th>
+                    <th>Scala binary version</th>
+                </tr>
+                <tr class="incr">
+                    <td>2.10.0</td>
+                    <td>2.10</td>
+                </tr>
+                <tr class="incr">
+                    <td>2.10.1</td>
+                    <td>2.10</td>
+                </tr>
+                <tr class="incr">
+                    <td>2.10.2</td>
+                    <td>2.10</td>
+                </tr>
+            </table>
+
+            <p>
+                <span class="incr blue">Scala 2.10.x ensures their binary compatibility</span>
+            </p>
+        </section>
+
+        <section>
+            <h1></h1>
+            <p>
+                <span class="incr blue">During RC period</span>
+            </p>
+
+            <table width="" cellspacing="" cellpadding="" border="0">
+                <tr>
+                    <th>Scala version</th>
+                    <th>Scala binary version</th>
+                </tr>
+                <tr class="incr">
+                    <td>2.10.0-RC1</td>
+                    <td><span class="red">2.10.0-RC1</span></td>
+                </tr>
+                <tr class="incr">
+                    <td>2.10.0-RC2</td>
+                    <td><span class="red">2.10.0-RC2</span></td>
+                </tr>
+                <tr class="incr">
+                    <td>2.10.0-RC3</td>
+                    <td><span class="red">2.10.0-RC3</span></td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section>
+            <h1></h1>
+            <p>
+                <span class="blue">Before 2.9.x</span>
+            </p>
+            <table width="" cellspacing="" cellpadding="" border="0">
+                <tr>
+                    <th>Scala version</th>
+                    <th>Scala binary version</th>
+                </tr>
+                <tr class="incr">
+                    <td>2.9.1</td>
+                    <td>2.9.1</td>
+                </tr>
+                <tr class="incr">
+                    <td>2.9.2</td>
+                    <td>2.9.2</td>
+                </tr>
+                <tr class="incr">
+                    <td>2.8.2</td>
+                    <td>2.8.2</td>
+                </tr>
+
+            </table>
+
+            <p>
+                <span class="incr blue">Scala version == Scala binary version</span>
+            </p>
+        </section>
+
+        <section>
+            <h1 style="margin-top: 30%;" class="green">Theme 2</h1>
+            <h2>Library Hosting</h2>
+        </section>
+
+        <section>
+            <h1>Library Hosting</h1>
+            <table>
+                <tr>
+                    <td>Ruby</td>
+                    <td>RubyGems</td>
+                </tr>
+                <tr>
+                    <td>Perl</td>
+                    <td>CPAN</td>
+                </tr>
+                <tr>
+                    <td>Python</td>
+                    <td>PyPI</td>
+                </tr>
+                <tr>
+                    <td>Java</td>
+                    <td>Maven Repository</td>
+                </tr>
+                <tr class="incr red">
+                    <td>Scala</td>
+                    <td>Maven Repository</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h1>One upon a time</h1>
+
+            There is a repository called scala-tools.org....
+            <ul>
+                <li>A major repository for Scala libraries <span class="incr red">until earlier 2012.</span></li>
+            </ul>
+            <img src="images/scala_tools_down.png" class="incr" alt="scala-tools down" style="margin: 0 auto;"/>
+        </section>
+
+        <section>
+            <h1>Now, Sonatype</h1>
+            <ul>
+                <img src="images/sonatype.png" class="" alt="" />
+            </ul>
+        </section>
+
+        <section>
+            <h1>Why should we use sonatype?</h1>
+            <ul>
+                <li class="incr red">cloned to Maven central</li>
+                <li class="incr">It doesn't require resolver settings in your build.sbt</li>
+                <li class="incr red">can't remove from Maven central.</li>
+                <li class="incr">Sonatype has resources to ensure things are working (not volunteer) </li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Conclusion</h1>
+            <ul>
+                <li class="incr"><span class="yellow">Be careful to binary compatibility.</span></li>
+                <li class="incr"><span class="yellow">Be careful to dependencies of your products.</span></li>
+                <li class="incr"><span class="">SBT 0.12 introduced Scala binary version</span> <span class="red incr">(Upgrade your SBT !!)</span></li>
+                <li class="incr"><span class="">Push your libraries to Sonatype</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1 style="margin-top: 30%;" class="red">Enjoy Scala!</h1>
+        </section>
+
+    </body>
+</html>

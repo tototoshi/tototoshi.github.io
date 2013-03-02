@@ -1,0 +1,18 @@
+body {
+    width: 760px;
+    margin: 50px auto 50px auto;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 32px;
+    line-height: 1.5em;
+}
+h1 { font-size: 64px; }
+h2 { font-size: 56px; }
+h3 { font-size: 48px; margin-left: 10px; }
+h4 { font-size: 40px; margin-left: 20px; }
+.l2 { margin-left: 10px; }
+.l3 { margin-left: 20px; }
+.l4 { margin-left: 30px; }
+.l5 { margin-left: 40px; }
+section { display: none; }
+a:link, a:visited { color:#12A0FF; text-decoration:none; }
+a:hover { color:#FF1385; }
