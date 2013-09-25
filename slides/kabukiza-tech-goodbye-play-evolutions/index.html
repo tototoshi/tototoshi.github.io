@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <title>さようなら play-evolutions</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- customize -->
+        <link rel="stylesheet" href="css/custom.css" />
+        <script type="text/javascript" src="js/custom.js"></script>
+
+        <!-- syntax highlighter -->
+        <link type="text/css" rel="stylesheet" media="screen,projection" href="shjs-0.6/css/sh_bright.min.css">
+        <script type="text/javascript" src="shjs-0.6/sh_main.min.js"></script>
+    </head>
+    <body onload="sh_highlightDocument('shjs-0.6/lang/', '.js');">
+
+        <section>
+            <h2>さようなら play-evolutions</h2>
+            <a href="//twitter.com/tototoshi">@tototoshi</a>
+        </section>
+
+        <section>
+            <h1>Evolutions</h1>
+            <img src="img/evolutions.png">
+            使ってますか？
+        </section>
+
+        <section>
+            私は使いません！！
+        </section>
+
+        <section>
+            <h1>Evolutions のここがダメ</h1>
+            <ul>
+                <li class="incr">謎挙動が多い。</li>
+                <li class="incr">実装が...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Evolutions のここがダメ</h1>
+            <ul>
+                <li class="incr">DBPlugin に依存している。</li>
+                <li class="incr">そして DBPlugin がまた...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Evolutions のここがダメ</h1>
+            <ul>
+                <li class="incr">そもそも機能が少なくて中途半端。</li>
+                <li class="incr">up/down の SQL を書かせられる。</li>
+                <li class="incr">だけど Revert はできない。</li>
+                <li class="incr">やる気が足りない感。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Evolutions のここがダメ</h1>
+            <p class="incr">Anorm はいやだ。他のライブラリ使いたい！</p>
+            <p class="incr">scalikejdbc を使おう。</p>
+            <p class="incr">scalikejdbc-play-plugin は DBPlugin 非依存。</p>
+            <p class="incr">Evolutions は DBPlugin 依存だから DBPlugin を無効にできない。</p>
+            <p class="incr">...困った。</p>
+        </section>
+
+        <section>
+            そこで
+        </section>
+
+        <section>
+            <img src="img/flyway-logo-transparent-300.png">
+            <p>
+                <a href="//flywaydb.org/" target="_blank">The agile database migration framework for Java</a>
+            </p>
+        </section>
+
+        <section>
+            play-plugin を作りました。
+        </section>
+
+        <section>
+            <h1><a href="//github.com/tototoshi/play-flyway" target="_blank">play-flyway</a></h1>
+build.sbt
+<pre class="sh_scala">
+libraryDependencies += "com.github.tototoshi" %% "play-flyway" % "1.0.0"
+</pre>
+
+play.plugins
+<pre>
+1000:com.github.tototoshi.play2.flyway.Plugin
+</pre>
+        </section>
+
+        <section>
+            <h1>Usage</h1>
+<pre style="font-size: 24px; line-height: 1.5em;">
+playapp
+├── app
+│   ├── controllers
+│   ├── models
+│   └── views
+├── conf
+│   ├── application.conf
+│   ├── db
+│   │   └── migration
+│   │       ├── default
+│   │       │   ├── V1__Create_person_table.sql
+│   │       │   └── V2__Add_people.sql
+│   │       └── secondary
+│   │           ├── V1__create_job_table.sql
+│   │           └── V2__Add_job.sql
+│   ├── play.plugins
+│   └── routes
+</pre>
+        </section>
+
+        <section>
+            <h1>Usage</h1>
+conf/db/migration/secondary/V1__create_job_table.sql
+            <pre class="sh_sql">CREATE TABLE job (
+    id integer primary key,
+    name varchar(200) not null
+);
+<pre>
+        </section>
+
+        <section>
+            <h1>Usage</h1>
+            <img src="//raw.github.com/tototoshi/play-flyway/master/screenshot1.png">
+        </section>
+
+        <section>
+            <h1>Admin</h1>
+            <img src="//raw.github.com/tototoshi/play-flyway/master/screenshot2.png">
+        </section>
+
+        <section>
+            <h1>喜びの声</h1>
+            <ul>
+                <li>便利なプラグインを作って頂き、ありがとうございました。非常に助かっております。(東京都・男性)</li>
+                <li>ご紹介いただいた play-flyway プラグインが特に問題なく動作したことと
+ファイル名の規則やスクリプトの書き方が evolutions より flyway の方が好みだったことから
+今回はこのまま play-flyway プラグインを使う方向で進めようかと考えています。(東京都・男性)</li>
+            </ul>
+        </section>
+
+        <section>
+            やったね！！
+        </section>
+
+        <section>
+            <h1>まとめ</h1>
+            <ul>
+                <li>Evolutions がいまいちだったので Flyway のプラグインを作りました。</li>
+                <li><a href="//github.com/tototoshi/play-flyway" target="_blank">https://github.com/tototoshi/play-flyway</a></li>
+            </ul>
+
+            <p>
+                <h2>宣伝</h2>
+                <dl>
+                    <dt>#rpscala (隔週水曜)</dt>
+                    <dd><a href="//groups.google.com/forum/#!forum/scalatokyo" target="_blank">https://groups.google.com/forum/#!forum/scalatokyo</a></dd>
+                </dl>
+            </p>
+
+        </section>
+
+    </body>
+</html>
