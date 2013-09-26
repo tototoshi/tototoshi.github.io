@@ -141,6 +141,33 @@ $(document).ready(function () {
 
     $(document).bind('keydown', move);
 
+    var startX;
+    var diffX;
+    $(document).bind("touchstart touchmove touchend", function (e) {
+        e.preventDefault();
+
+        var touch = e.originalEvent.touches[0];
+
+        if (e.type == "touchstart") {
+            startX = touch.pageX;
+        } else if (e.type == "touchmove") {
+            diffX = touch.pageX - startX;
+        } else if (e.type == "touchend") {
+            if (diffX < 0) {
+                if (displayOneMoreItem()) {
+                    return;
+                }
+                showNewPage(1)
+            }
+            if (diffX > 0) {
+                if (hideOneMoreItem()) {
+                    return;
+                }
+                showNewPage(-1)
+            }
+        }
+    });
+    
     var storedPageIndex = -1;
 
     window.setInterval(function () {
