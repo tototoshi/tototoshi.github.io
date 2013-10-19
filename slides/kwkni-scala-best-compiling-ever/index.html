@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <title>最高のコンパイルにしようぜ</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- customize -->
+        <link rel="stylesheet" href="css/custom.css" />
+        <script type="text/javascript" src="js/custom.js"></script>
+
+        <!-- syntax highlighter -->
+        <link type="text/css" rel="stylesheet" media="screen,projection" href="shjs-0.6/css/sh_bright.min.css">
+        <script type="text/javascript" src="shjs-0.6/sh_main.min.js"></script>
+    </head>
+    <body onload="sh_highlightDocument('shjs-0.6/lang/', '.js');">
+
+        <section>
+            <h2>最高のコンパイルにしようぜ</h2>
+            <a href="//twitter.com/tototoshi" target="_blank">@tototoshi</a>
+        </section>
+
+        <section>
+            <h1>自己紹介</h1>
+            <ul>
+                <li><a href="//www.pixiv.net" target="_blank">pixiv</a> で PHP 書いてます</li>
+            </ul>
+        </section>
+
+        <section>
+            Scala も書きます。
+        </section>
+
+        <section>
+            <ul>
+                <li><a target="_blank" href="//github.com/tototoshi/play-flyway">play-flyway</a></li>
+                <li><a target="_blank" href="//github.com/tototoshi/slick-joda-mapper">slick-joda-mapper</a></li>
+                <li><a target="_blank" href="//github.com/tototoshi/scala-csv">scala-csv</a></li>
+                <li><a target="_blank" href="//github.com/tototoshi/play-json4s">play-json4s</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>最近作ったやつ</h1>
+            <a href="//github.com/tototoshi/staticmock" target="_blank">StaticMock</a>: テスト時にスタティックメソッドをすり替えるDSL
+            <pre class="sh_php">$mock = StaticMock::mock('FooService');
+$mock
+    ->shouldReceive('foo')
+    ->with(1)
+    ->once()
+    ->andReturn('Something');
+            </pre>
+        </section>
+
+        <section>
+            あっ、興味ないですか...
+        </section>
+
+        <section>
+            Scala の話をします。
+        </section>
+
+        <section>
+            <h1>Scala の良いところ</h1>
+            <span class="incr">PHP よりいいんじゃないかな！</span>
+        </section>
+
+        <section>
+            <h1>Scala の悪いところ</h1>
+            <div class="incr">
+                <span>コンパイルおせえ !!!!</span>
+            </div>
+        </section>
+
+        <section>
+            <h1>コンパイルなげーよ問題</h1>
+            <ul>
+                <li>implicit ...</li>
+                <li>マクロ</li>
+                <li>trait</li>
+                <li>コンパイル時コード生成</li>
+                <li>...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>コンパイルなげーよ問題</h1>
+            <ul>
+                <li>とささん「コンパイル遅い」</li>
+                <li>せらさん「コンパイル遅い」</li>
+                <li>かすやさん「慣れた」</li>
+                <li>おかむらさん「コンパイル遅い」</li>
+                <li>たけぞえさん「コンパイル遅い」</li>
+                <li>いのうえさん「コンパイル遅い」</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>よくある光景</h1>
+            <img src="./img/golgo.jpg" class="" alt="" />
+        </section>
+
+        <section>
+            <h1>よくある光景</h1>
+            <img src="./img/mitsui.jpg" class="" alt="" />
+        </section>
+
+        <section>
+            <h1>というか</h1>
+            コンパイル以外もいろいろ遅い。
+
+            <br />
+            <br />
+            <span class="incr">実話</span>
+            <ul>
+                <li class="incr">新幹線で京都->東京</li>
+                <li class="incr">移動中にコード書くか</li>
+                <li class="incr">sbt gen-idea in 京都駅</li>
+                <li class="incr">Downloading ...</li>
+                <li class="incr">東京着</li>
+            </ul>
+        </section>
+
+        <section>
+            まだコード書いてねえし!!!
+            <img src="./img/majide.jpg" class="" alt="" />
+        </section>
+
+        <section>
+            <h1>解決策 1</h1>
+            <ul>
+                <li>良い PC を買う?</li>
+                <li>金くれ</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>解決策 2</h1>
+            あきらめる
+            <ul>
+                <li class="incr">だれでもできる</li>
+                <li class="incr">簡単</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>逆に考えるんだ</h1>
+            <ul>
+                <li>もう、コンパイル時間長くてもいいんじゃないかな、って</li>
+                <li>コンパイルが長いからこそできることがあるんじゃないかな、って</li>
+            </ul>                
+        </section>
+
+        <section>
+            <h1><a href="//github.com/tototoshi/staticmock" target="_blank">sbt-musical</a></h1>
+        </section>
+
+        <section>
+            <h1>DEMO</h1>
+        </section>
+
+        <section>
+            <h1>Install</h1>
+            <pre class="sh_scala">
+addSbtPlugin("com.github.tototoshi" % "sbt-musical" % "0.1.1")
+            </pre>
+        </section>
+
+        <section>
+            <h1>Usage</h1>
+            コンパイル時に音楽を流す
+            <pre>
+> ♪ compile
+            </pre>
+        </section>
+
+        <section>
+            <h1>Usage</h1>
+            テスト時に音楽を流す
+            <pre>
+> ♪ test
+            </pre>
+        </section>
+
+        <section>
+            <h1>Usage</h1>
+            ファイル変更をトリガにする
+            <pre>
+> ~ ♪ compile
+            </pre>
+        </section>
+
+        <section>
+            <h1><a href="//github.com/tototoshi/staticmock" target="_blank">sbt-musical</a></h1>
+
+            <ul>
+                <li>コンパイル時間が長いほど長く曲が聞ける</li>
+                <li>短いと逆にストレスがたまる</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>その時歴史は動いた</h1>
+            <ul>
+                <li><del>scala はコンパイル時間が長いのでダメだ。</del></li>
+                <li><b style="color: #FF1385;">scala はコンパイル時間が長いので素晴らしい。</b></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>まとめ</h1>
+            <ul>
+                <li><a href="//github.com/tototoshi/sbt-musical" target="_blank">sbt-musical</a>で最高のコンパイルにしようぜ</li>
+            </ul>
+
+            <p>
+                <h2>宣伝</h2>
+                <dl>
+                    <dt>#rpscala (隔週水曜)</dt>
+                    <dd><a href="//groups.google.com/forum/#!forum/scalatokyo" target="_blank">https://groups.google.com/forum/#!forum/scalatokyo</a></dd>
+                </dl>
+            </p>
+
+        </section>
+
+    </body>
+</html>
