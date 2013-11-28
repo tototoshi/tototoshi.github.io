@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>アルパカの生態</title>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!-- customize -->
+        <link rel="stylesheet" href="css/custom.css" />
+        <script type="text/javascript" src="js/custom.js"></script>
+
+        <!-- syntax highlighter -->
+        <link type="text/css" rel="stylesheet" media="screen,projection" href="shjs-0.6/css/sh_bright.min.css">
+        <script type="text/javascript" src="shjs-0.6/sh_main.min.js"></script>
+    </head>
+    <body onload="sh_highlightDocument('shjs-0.6/lang/', '.js');">
+
+        <section>
+            <h1>アルパカの生態</h1>
+            <a href="//twitter.com/tototoshi" target="_blank">@tototoshi</a>
+        </section>
+
+        <section>
+            <h1>自己紹介</h1>
+            <ul>
+                <li><a href="//twitter.com/tototoshi" target="_blank">@tototoshi</a></li>
+                <li><a href="//www.pixiv.net" target="_blank">pixiv</a>で PHP 書いてます</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1><a href="//github.com/tototoshi" target="_blank">作ってるもの</a></h1>
+            Scala
+            <ul>
+                <li><a href="//github.com/tototoshi/play-flyway" target="_blank">play-flyway</a></li>
+                <li><a href="//github.com/tototoshi/scala-csv" target="_blank">scala-csv</a></li>
+                <li><a href="//github.com/tototoshi/slick-joda-mapper" target="_blank">slick-joda-mapper</a></li>
+                <li><a href="//github.com/tototoshi/sbt-musical" target="_blank">sbt-musical</a></li>
+                <li><a href="//github.com/tototoshi/sbt-shintyoku-doudesuka" target="_blank">sbt-shintyoku-doudesuka</a></li>
+            </ul>
+            PHP
+            <ul>
+                <li><a href="//github.com/tototoshi/staticmock" target="_blank">staticmock</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>今日の内容</h1>
+            Web ブラウザをぐりぐりうごかす
+        </section>
+
+        <section>
+            <h1>注意</h1>
+            テストがしたいわけじゃありません
+        </section>
+
+        <section>
+            <h1>Web ブラウザを動かす</h1>
+
+            <ul>
+                <li>Selenium</li>
+                <li>Capybara</li>
+                <li>ScalaTest</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Selenium</h1>
+            <ul>
+                <li>そのままではめんどくさすぎ</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Capybara</h1>
+
+            <ul>
+                <li>Ruby の内部 DSL</li>
+                <li>Ruby 嫌い...</li>
+                <li>DSL自体は簡単だけどrequireやら設定やらは必要</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>ScalaTest</h1>
+
+<pre class="sh_scala">
+
+implicit val webDriver: WebDriver = 
+  new HtmlUnitDriver
+
+val host = "http://localhost:9000/"
+
+"The blog app home page" should "have the correct title" in {
+  go to (host + "index.html")
+  pageTitle should be ("Awesome Blog")
+}
+</pre>
+        </section>
+
+        <section>
+            <h1>ScalaTest</h1>
+
+            <ul>
+                <li>Selenium DSL</li>
+                <li>イケてるかも</li>
+                <li>でもsbt プロジェクト作るのめんどくさい...</li>
+                <li>コンパイル遅い...</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>問題</h1>
+            <ul>
+                <li>どれもそれほどお手軽ではない</li>
+                <li>使い捨てる感じではない</li>
+                <li>2, 3行だけで動かしたい</li>
+            </ul>
+            <p class="incr">とにかくもっと手軽に動かして日常的に使いたい</p>
+        </section>
+
+        <section>
+            もしかして、Web ブラウザを動かすためだけのスクリプト言語(DSL)があればよいのでは？
+        </section>
+
+        <section>
+            作ってみました
+        </section>
+
+        <section>
+            <h1>Alpaca</h1>
+
+            <a href="//github.com/tototoshi/alpaca" target="_blank">http://github.com/tototoshi/alpaca</a>
+            <ul>
+                <li>Web ブラウザを動かすためだけのミニ言語</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h1>Alpaca</h1>
+
+            <a href="https://www.google.co.jp/search?q=%E4%B8%96%E7%95%8C%E6%9C%80%E6%81%90%E5%8B%95%E7%89%A9&espv=210&es_sm=91&source=lnms&tbm=isch&sa=X&ei=6IePUqmdKYmMiQf_9oDQCA&ved=0CAkQ_AUoAQ&biw=1140&bih=942" target="_blank">世界最恐動物</a> アルパカ
+            <img src="img/alpaca.jpg" style="display:block;">
+            <br />
+            名前の由来
+            <ul>
+                <li>カピバラに勝てそう</li>
+                <li>paulp さんリスペクト(<a href="https://groups.google.com/forum/#!msg/scala-internals/REW-30A_vrA/fjRbC1diZuMJ" target="_blank">-26966 lines? It looks like less, somehow</a>)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Syntax</h1>
+
+            <pre class="sh_sh">
+#!/usr/bin/env alpaca
+visit("http://www.pixiv.net")
+fill("#user", $USER)
+fill("#pass", $PASSWORD)
+submit()
+            </pre>
+        </section>
+
+        <section>
+            <h1>Syntax</h1>
+
+            <pre class="sh_ruby">
+def login(user, name) {
+  ...
+}
+
+var user = "tototoshi"
+var password = "scalachankawaii"
+login(user, password)
+            </pre>
+        </section>
+
+        <section>
+            <h1>Syntax</h1>
+
+            <pre class="sh_ruby">
+require "util.alpaca"
+            </pre>
+        </section>
+
+        <section>
+            <h1>Syntax</h1>
+
+            <pre class="sh_sh">
+print $(date +%Y%m%d)
+            </pre>
+        </section>
+
+        <section>
+            <h1>Demo</h1>
+        </section>
+
+        <section>
+            <h1>実装</h1>
+            <ol>
+                <li>パーサコンビネータでパースして木構造を作る</li>    
+                <li>それを評価する</li>    
+            </ol>
+        </section>
+
+        <section>
+            <h1>イメージ</h1>
+            <ul style="list-style: none;">
+                <li>
+<pre class="sh_scala">print "Hello"
+</pre>
+                </li>    
+                <li class="incr">↓</li>    
+                <li class="incr">
+<pre class="sh_scala">case class Print(msg: Hello)
+</pre>
+                </li>    
+                <li class="incr">↓</li>    
+                <li class="incr">
+<pre class="sh_scala">case Print(msg) =&gt; println(msg)
+</pre>
+                </li>    
+            </ul>
+        </section>
+
+        <section>
+            <h1>ポイント</h1>
+            <ul>
+                <li>Scala の Parser Combinator 便利！(<a href="//github.com/tototoshi/php-parser-combinator" target="_blank">PHP でやるとこうなる</a>)</li>
+                <li>パースしやすい文法にするとラク。</li>
+                <li>パーサコンビネータでシンタックスエラーをわかりやすく表示する方法誰か教えて。</li>
+                <li>文字列への変数の埋め込みの実装が結構めんどくさい。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>まとめ</h1>
+            <ul>
+                <li class="incr">Scala のコンパイルが遅いので Scala でスクリプト言語を作った。</li>
+                <li class="incr">capybara &amp; ruby でよかった気がしないでもない（焦）</li>
+                <li class="incr">Scala でも気軽に DSL が作れる（いい話）</li>
+            </ul>
+
+            <div class="incr">
+                <h1>告知</h1>
+                <ul>
+                    <li><a href="http://partake.in/events/c9a67dbc-1e02-448a-9305-0204f81eca52" target="_blank">#rpscala 忘年会 2013</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </body>
+</html>
