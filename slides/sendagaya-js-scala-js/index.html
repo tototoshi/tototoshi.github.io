@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <title>Scala.js</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- customize -->
+    <link rel="stylesheet" href="css/custom.css"/>
+
+    <!-- syntax highlighter -->
+    <link type="text/css" rel="stylesheet" media="screen,projection" href="shjs-0.6/css/sh_bright.min.css">
+    <script type="text/javascript" src="shjs-0.6/sh_main.min.js"></script>
+</head>
+<body>
+
+<div class="section">
+    <h1>Scala.js</h1>
+
+    <a href="//twitter.com/tototoshi">@tototoshi</a><br>
+    2014/03/19 Sendagaya.js (仮)
+
+</div>
+
+<div class="section">
+    <h1>自己紹介</h1>
+    <ul>
+        <li>Twitter: <a href="//twitter.com/tototoshi" target="_blank">@tototoshi</a></li>
+        <li>Github: <a href="//github.com/tototoshi" target="_blank">github.com/tototoshi</a></li>
+        <li>pixiv で画像周りやってます。</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>自己紹介</h1>
+    <ul>
+        <li>好きな言語: Scala</li>
+        <li>作ってる</li>
+        <ul>
+            <li><a href="https://github.com/tototoshi/slick-joda-mapper" target="_blank">tototoshi/slick-joda-mapper</a></li>
+            <li><a href="https://github.com/tototoshi/play-flyway" target="_blank">tototoshi/play-flyway</a></li>
+            <li>あとは Play とかいろいろ</li>
+        </ul>
+    </ul>
+</div>
+
+<div class="section">
+    というわけで、フロントもScalaで書きたい!
+</div>
+
+<div class="section">
+    <h1><a href="//www.scala-js.org" target="_blank">Scala.js</a></h1>
+    <ul>
+        <li>"Scala to JavaScript" Compiler</li>
+        <li>つまりは altJS</li>
+        <li>2014/03/19 現在のバージョンは 0.4.0</li>
+    </ul>
+    <img src="img/scala-js-logo.svg" height="200px">
+
+</div>
+
+<div class="section">
+    <h1><a href="//www.scala-js.org" target="_blank">Scala.js</a></h1>
+    Scala の全ての言語機能が使える
+    <ul>
+        <li>Pattern matching</li>
+        <li>Extractor</li>
+        <li>For-comprehension</li>
+        <li>Option(Maybe) Monad</li>
+        <li>String interpolation</li>
+        <li>etc...</li>
+        <li>Static types for JavaScript</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1><a href="//www.scala-js.org" target="_blank">Scala.js</a></h1>
+    JavaScript のグローバル関数は <code>scala.scalajs.js.Dynamic.global</code> を通して呼び出せる。
+
+    <script src="https://gist.github.com/tototoshi/d643eeb4196de7497bab.js"></script>
+
+</div>
+
+<div class="section">
+    <h1><a href="//www.scala-js.org" target="_blank">Scala.js</a></h1>
+    Static types for JavaScript
+    <ul>
+        <li>JavaScript を静的型付け言語として扱うことも可能</li>
+        <li>TypeScript に似ている</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>テスト</h1>
+    <ul>
+        <li><a href="https://github.com/scala-js/scala-js/tree/v0.4.0/jasmine-test-framework">jasmine</a> をサポート</li>
+        <li>JavaScript に変換した上でテストが走る</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>仕組み</h1>
+    <img src="./img/scala-js-001.png">
+</div>
+
+<div class="section">
+    <h1>歴史</h1>
+    <ul>
+        <li>2013/06 @ScalaDays</li>
+        <ul>
+            <li>16MB のHello, World.</li>
+        </ul>
+        <li>2013/08</li>
+        <ul>
+            <li>900KB</li>
+            <li>コンパイル30秒</li>
+        </ul>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>歴史</h1>
+    <ul>
+        <li>2013/10</li>
+        <ul>
+            <li>700KB</li>
+            <li>Scalaz が動く</li>
+        </ul>
+        <li>2013/11</li>
+        <ul>
+            <li>400KB</li>
+        </ul>
+        <li>2013/12</li>
+        <ul>
+            <li>Test suite がつく</li>
+        </ul>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>歴史</h1>
+    <ul>
+        <li>2014/02</li>
+        <ul>
+            <li>300KB</li>
+            <li>コンパイル1秒</li>
+            <li>optimize 5分</li>
+        </ul>
+        <li>2014/02 (scala.js 0.4.0)</li>
+        <ul>
+            <li>150KB</li>
+            <li>optimize 30秒</li>
+            <li>@JSExport</li>
+            <li><a href="http://blog.pab-tech.net/2014/03/14/scala-js-040.html" target="_blank">Scala.js 0.4.0新機能の紹介 - PABlog</a></li>
+        </ul>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>使えるの？</h1>
+    <ul>
+        <li>始めはみんなネタだと思っていた。</li>
+        <li>ところが1年足らずでかなりの進化を遂げてしまった。</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>サンプルコード</h1>
+    <ul>
+        <li>このスライド</li>
+        <li><a href="https://github.com/tototoshi/scala-js-slide" target="_blank">tototoshi/scala-js-slide</a></li>
+    </ul>
+</div>
+
+<div class="section">
+    <script src="https://gist.github.com/tototoshi/cf886c9f832a9f2dc0d3.js"></script>
+</div>
+
+<div class="section">
+    <script src="https://gist.github.com/tototoshi/8ed12fdd60b09974db65.js"></script>
+</div>
+
+
+<div class="section">
+    簡単でしょ?
+</div>
+
+<div class="section">
+    <h1>出力された JavaScript</h1>
+    読めないけど、見てみよう。
+    <ul>
+        <li><a href="./js/slide.js" target="_blank">slide.js</a></li>
+        <li><a href="./js/slide-opt.js" target="_blank">slide-opt.js (最適化後)</a></li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>やってみる？</h1>
+
+    <pre>$ git clone https://github.com/sjrd/scala-js-example-app.git
+    </pre>
+</div>
+
+<div class="section">
+    <h1>Library &amp; tools</h1>
+    <ul>
+        <li><a href="http://www.scala-js-fiddle.com/" target="_blank">Scala.jsFiddle</a></li>
+        <li><a href="https://github.com/scala-js/scala-js-dom" target="_blank">scala-js-dom - Static types for DOM API</a></li>
+        <li><a href="https://github.com/scala-js/scala-js-jquery" target="_blank">scala-js-jquery - Static type for jQuery</a></li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>お役立ち</h1>
+    <ul>
+        <li><a href="http://www.scala-js.org/" target="_blank">scala-js.org</a></li>
+        <li><a href="http://vimeo.com/87845442" target="_blank">Live Coding ScalaJS, SF Scala 28 Feb 2014 on Vimeo</a></li>
+        <li><a href="http://www.scala-js.org/doc/js-interoperability.html" target="_blank">JavaScript interoperability</a></li>
+        <li><a href="http://blog.pab-tech.net/2014/02/26/htmlda-scala-js.html" target="_blank">Scala.jsとJVMの両対応コードとScala.jsのテストの書き方</a></li>
+
+    </ul>
+    Scala については
+    <ul>
+        <li><a href="http://www.amazon.co.jp/dp/4844330845" target="_blank">【書籍】Scala スケーラブルプログラミング</a></li>
+        <li><a href="http://www.scala-lang.org/docu/files/ScalaByExample.pdf" target="_blank">【PDF】Scala By Example</a></li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>今後</h1>
+    <ul>
+        <li>もっと小さく、コンパイルが速く?</li>
+        <li>
+            Play に入るかも? - <a href="https://github.com/playframework/playframework/issues/2321" target="_blank">Add buildin ScalaJs support · Issue #2321</a>
+        </li>
+        <li>DefinitelyTyped for scala.js 欲しい</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>宣伝</h1>
+    2014/09/06-07 ScalaMatsuri
+    <ul>
+        <li>Guest: Martin Odersky 先生</li>
+    </ul>
+    <a href="http://rpscala.doorkeeper.jp/" target="_blank">#rpscala</a>
+    <ul>
+        <li>隔週水曜 20:00~22:00</li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="./js/slide-opt.js"></script>
+<script type="text/javascript">
+    ScalaJSSlide().main()
+</script>
+</body>
+</html>
