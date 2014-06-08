@@ -1,8 +1,5 @@
 @charset "utf-8";
 
-@import url(countdown.css);
-
-/*---------- �y�[�W�S�̂̎w�� ----------*/
 
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif, "�l�r �S�V�b�N","Hiragino KaKu Gothic Pro", Osaka;
@@ -10,7 +7,6 @@ body {
   padding: 0;
   color:#666;
   background-color: #000;
-  background-image: url(img/bg.jpg);
   background-repeat:repeat-x;
 }
 
