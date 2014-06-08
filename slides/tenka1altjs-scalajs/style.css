@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-    font-family: Verdana, Arial, Helvetica, sans-serif, "�l�r �S�V�b�N", "Hiragino KaKu Gothic Pro", Osaka;
+    font-family: Verdana, Arial, Helvetica, sans-serif, "Hiragino KaKu Gothic Pro", Osaka;
     margin: 0;
     padding: 0;
     color: #666;
@@ -32,26 +32,19 @@ p {
     font-size: 14px;
 }
 
-/*---------- ���C�� ----------*/
-
 #wrapper {
     margin: 0 auto 0 auto;
     width: 830px;
     background-image: url(img/bg_w.jpg);
 }
 
-/*---------- �w�b�_�[ ----------*/
-
 #header h1 {
-    font-family: "�l�r �S�V�b�N", "Osaka�|����";
     font-weight: bold;
     margin: 0;
     padding: 20px 0px 0px 190px;
     font-size: 12px;
     color: #999999;
 }
-
-/*---------- �R���e���c ----------*/
 
 #container {
     padding: 40px 60px 0 60px;
@@ -129,7 +122,7 @@ p {
     letter-spacing: 1px;
     border-left: solid 6px #FF0000;
     margin: 10px 20px 5px 20px;
-    font-family: '���C���I', Meiryo, Verdana, Helvetica, Arial, '�q���M�m�p�S Pro W3', 'Hiragino Kaku Gothic Pro', '�l�r �o�S�V�b�N', sans-serif;
+    font-family: Meiryo, Verdana, Helvetica, Arial, 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
 .cap3sub {
@@ -286,8 +279,6 @@ dl.list01 dd {
     background-color: #F5F5F5;
 }
 
-/*---------- �t�b�^�[ ----------*/
-
 #footer {
     clear: both;
     margin: 0 20px 0 20px;
@@ -303,7 +294,6 @@ dl.list01 dd {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/*---------- ���� ----------*/
 .center {
     text-align: center;
 }
@@ -361,7 +351,7 @@ dl.list01 dd {
     border-left: solid 4px #FF0000;
     padding: 15px 0 5px 10px;
     margin-bottom: 15px;
-    font-family: '���C���I', Meiryo, Verdana, Helvetica, Arial, '�q���M�m�p�S Pro W3', 'Hiragino Kaku Gothic Pro', '�l�r �o�S�V�b�N', sans-serif;
+    font-family: Meiryo, Verdana, Helvetica, Arial,'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
 .ps2 {
@@ -373,7 +363,7 @@ dl.list01 dd {
     border-left: solid 4px #FF0000;
     padding: 15px 0 5px 10px;
     margin: 30px 0 15px 0;
-    font-family: '���C���I', Meiryo, Verdana, Helvetica, Arial, '�q���M�m�p�S Pro W3', 'Hiragino Kaku Gothic Pro', '�l�r �o�S�V�b�N', sans-serif;
+    font-family: Meiryo, Verdana, Helvetica, Arial, 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
 .ps_s {
