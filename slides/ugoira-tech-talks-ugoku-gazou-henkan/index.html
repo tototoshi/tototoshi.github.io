@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <title>うごイラ画像変換</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- customize -->
+    <link rel="stylesheet" href="css/custom.css"/>
+
+</head>
+<body>
+
+<div class="section">
+    <h1>うごイラと画像変換</h1>
+
+    <p>2014/08/01</p>
+    <a href="https://twitter.com/tototoshi" target="_blank">@tototoshi</a>
+</div>
+
+<div class="section">
+    <h1>自己紹介</h1>
+    <ul>
+        <li>高橋です</li>
+        <li><a href="https://twitter.com/tototoshi" target="_blank">@tototoshi</a></li>
+        <li><a href="https://github.com/tototoshi" target="_blank">github</a></li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>担当</h1>
+    画像まわり
+    <ul>
+        <li>アップロード</li>
+        <li>変換</li>
+        <li>ストレージ</li>
+        <li>配信</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>うごイラ</h1>
+    <img src="img/ugoira.gif">
+</div>
+
+<div class="section">
+    <h1>うごイラとは</h1>
+
+    百科事典より
+    <pre>
+        従来のgifアニメとは異なり、GIF形式、PNG形式、JPEG形式のイラストを正式にうごかすことができる。
+        そのため高画質で色彩豊かなうごく作品を投稿、閲覧することができる。
+    </pre>
+</div>
+
+<div class="section">
+    <h1>うごイラとは</h1>
+
+    百科事典より
+    <pre>
+        今のところ投稿されたイラストの保存には対応していないが、下記のjavascriptを実行するとzip形式で保存できる。
+        window.location.href = pixiv.context.ugokuIllustFullscreenData.src;
+    </pre>
+</div>
+
+<div class="section">
+    <h1>エンジニア向け説明</h1>
+
+    <ul>
+        <li>投稿された画像を zip につめて配信して JavaScript で zip 画像を読み込んで canvas に描画する。</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>うごイラの仕組み</h1>
+
+    <p>
+        <a href="http://rndomhack.com/2014/07/04/%e3%81%86%e3%81%94%e3%82%a4%e3%83%a9%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6%e3%81%a1%e3%82%87%e3%81%a3%e3%81%a8%e8%80%83%e3%81%88%e3%81%a6%e3%81%bf%e3%81%9f/" target="_blank">うごイラについてちょっと考えてみた | らんだむけんきゅうじょ</a>
+    </p>
+
+    だいたいあってる (80点くらい)
+</div>
+
+<div class="section">
+    <h1>なぜ GIF アニメではないのか?</h1>
+
+    <ul>
+        <li>画質</li>
+        <li>文化</li>
+        <ul>
+            <li>GIFアニメ ≒ 動画</li>
+            <ul>
+                <li>おもしろGIF</li>
+                <li>アニメのワンシーン</li>
+            </ul>
+            <li>pixiv = お絵描き</li>
+        </ul>
+    </ul>
+    <div style="display: inline">
+        <img src="img/neko.gif">
+    </div>
+</div>
+
+<div class="section">
+    <h1>うごイラ is not 動画</h1>
+
+    うごイラ is お絵描きの延長
+    <ul>
+        <li>投稿の敷居を上げたくない</li>
+        <ul>
+            <li>GIF の作り方とか知らん</li>
+            <li>「目パチ」とかでも動くと楽しい</li>
+            <li>お絵描きとして楽しんでほしい</li>
+        </ul>
+    </ul>
+
+    <div style="display: inline">
+        <div style="width: 300px;">
+            <img src="img/girl.gif">
+        </div>
+        <a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=44816782" target="_blank">目パチ　女の子 | 有佳♧ [pixiv]</a>
+    </div>
+</div>
+
+<div class="section">
+    <p>
+        (とはいえ GIF アニメもサポートしたいよね)
+    </p>
+    <div>
+        <a href="http://twitpic.com/c0ap71" title="スマプリ完結記念に作ってたキュアハッピー対バッドエンドハッピー完成！どこまでも女子力が低い感じになっちゃったけど他の四人の... on Twitpic"><img src="http://twitpic.com/show/thumb/c0ap71.gif" width="150" height="150" alt="スマプリ完結記念に作ってたキュアハッピー対バッドエンドハッピー完成！どこまでも女子力が低い感じになっちゃったけど他の四人の... on Twitpic"></a>
+    </div>
+</div>
+
+<div class="section">
+    <h1>うごイラの目標</h1>
+    <ul>
+        <li>高画質なイラストを動かしたい</li>
+        <li>GIF もサポートしたい</li>
+    </ul>
+
+</div>
+
+<div class="section">
+    <h1>ところで</h1>
+
+    <blockquote class="twitter-tweet" lang="ja"><p>Starting today, you can share and view animated GIFs on <a href="http://t.co/wJD8Fp317i">http://t.co/wJD8Fp317i</a>, Android and iPhone. <a href="http://t.co/XBrAbOm4Ya">http://t.co/XBrAbOm4Ya</a></p>&mdash; Twitter Support (@Support) <a href="https://twitter.com/Support/statuses/479307198901026816">2014, 6月 18</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+
+<div class="section">
+    <h1>Twitter の GIF アニメ対応の特徴</h1>
+    GIF を mp4 に変換する
+
+    <ul>
+        <li>ファイルサイズが小さくなる</li>
+        <li>そのかわり画質劣化が大きい</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>一方うごイラ</h1>
+
+    jpg を zip に固めて配信する。
+    アニメーション GIF もフレームをばらして jpg にする
+    <ul>
+        <li>ファイルサイズが大きい</li>
+        <li>画質劣化はなし</li>
+    </ul>
+</div>
+
+<div class="section">
+    <blockquote class="twitter-tweet" lang="ja"><p>どうやって実装されているのかと思ったら、Jpegがzipで固められていた。APNGとかMNGとかJNGとかのこと、時々でいいから思い出してください(´；ω；`)&#10;[pixiv] お知らせ - うごくイラスト『うごイラ』をリリース&#10;<a href="http://t.co/PZZjqAJBpz">http://t.co/PZZjqAJBpz</a></p>&mdash; kusanoさん@がんばらない (@kusano_k) <a href="https://twitter.com/kusano_k/statuses/481826479932600320">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    ※ APNG 実は対応してるよ!
+</div>
+
+<div class="section">
+    <blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p>mjpegも &lt;<a href="https://twitter.com/kusano_k">@kusano_k</a>: …APNGとかMNGとかJNGとかのこと、時々でいいから思い出してください(´；ω；`)&lt; [pixiv] お知らせ - うごくイラスト『うごイラ』をリリース&#10;<a href="http://t.co/NxO3XvuIz1">http://t.co/NxO3XvuIz1</a></p>&mdash; Dan Kogai (@dankogai) <a href="https://twitter.com/dankogai/statuses/481827200660815872">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/dankogai">@dankogai</a> 忘れてました。APNGとかよりメジャーですねw</p>&mdash; kusanoさん@がんばらない (@kusano_k) <a href="https://twitter.com/kusano_k/statuses/481827529783660544">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    ※ それもちょっと考えた!
+</div>
+
+<div class="section">
+    <blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p>マジレスすると、静止画像から発展した動画フォーマットはいづれも時間方向圧縮が欠如しているので、Twitterのようにmp4化(厳密にはh.264化)してしまうのが正解に思える &lt;<a href="https://twitter.com/kusano_k">@kusano_k</a></p>&mdash; Dan Kogai (@dankogai) <a href="https://twitter.com/dankogai/statuses/481829173892112386">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    ※ せやな
+</div>
+
+<div class="section">
+    <blockquote class="twitter-tweet" lang="ja"><p>MPEG系の時間圧縮ってのは時間軸の前後のコマで動きが少ない事を前提にしているので、アニメには効果が薄いんだよ。的外れ</p>&mdash; がちゃぴん先生bot (@kosaki55tea) <a href="https://twitter.com/kosaki55tea/statuses/481830170203279361">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/kosaki55tea">@kosaki55tea</a> アニメだと、むしろ、動き少なくないですか？</p>&mdash; えむば姫 (@m_bird) <a href="https://twitter.com/m_bird/statuses/481830355033264129">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/kosaki55tea">@kosaki55tea</a> 背景動かないとか、動き補償とかあんまり効かない？</p>&mdash; 鯉江 (@koie) <a href="https://twitter.com/koie/statuses/481832219908927488">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    ※ 各位、仲良く
+</div>
+
+<div class="section">
+    <blockquote class="twitter-tweet" data-conversation="none" lang="ja"><p><a href="https://twitter.com/dankogai">@dankogai</a> GIFの再生負荷の軽さは大きな魅力だと思います。まあ、ほとんど差分の無いFullHDの画像が複数枚含まれたzipはどうかと思いますが。</p>&mdash; kusanoさん@がんばらない (@kusano_k) <a href="https://twitter.com/kusano_k/statuses/481830246153330688">2014, 6月 25</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    ※ GIFアニメ実際そんな軽くないんだよねえ。あと再生できない端末もあるし。
+</div>
+
+<div class="section">
+    <h1>お騒がせしてすみません</h1>
+
+    <ul>
+        <li>うごイラに適した良いフォーマットが見つからなかった</li>
+        <li>動画よりは画像にしたかった</li>
+        <ul>
+            <li>画質はやっぱり画像のほうが良い</li>
+            <li>ImageMagick に加えて ffmpeg と戦うのちょっとやだな。。。</li>
+        </ul>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>振り返り</h1>
+
+    <ul>
+        <li>画質が良いのはサイコー</li>
+        <li>サイズはでかい</li>
+    </ul>
+
+    知ってた
+</div>
+
+<div class="section">
+    <h1>うごイラの今後</h1>
+
+    <ul>
+        <li>やっぱり画像サイズは小さくしたい</li>
+        <li>.ugo フォーマット作る?</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h1>まとめ</h1>
+
+    <ul>
+        <li>うごイラは GIF アニメじゃない</li>
+        <li>うごイラは動画じゃない</li>
+    </ul>
+
+    <blockquote class="twitter-tweet" lang="ja"><p>うごイラ、技術的には挑戦というより悪ノリって感じ</p>&mdash; Toshiyuki Takahashi (@tototoshi) <a href="https://twitter.com/tototoshi/statuses/484333568986869762">2014, 7月 2</a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="./target/scala-2.11/slide-opt.js"></script>
+<script type="text/javascript">
+    ScalaJSSlide().main()
+</script>
+</body>
+</html>
