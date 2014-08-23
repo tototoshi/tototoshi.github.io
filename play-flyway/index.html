@@ -138,6 +138,13 @@ db.default.migration.placeholders.hoge="pupi"
 <pre><code class="highlight sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">USERS</span> <span class="p">(</span><span class="n">bar</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'pupi'</span><span class="p">)</span>
 </code></pre>
 
+<h3>Enable/disable Validation</h3>
+
+<p>From flyway 3.0, <code>validate</code> run before <code>migrate</code> by default.
+Set <code>validateOnMigrate</code> to false if you want to disable this.</p>
+<pre><code class="highlight plaintext">db.${dbName}.migration.validateOnMigrate=false // true by default
+</code></pre>
+
 <h3>Dev</h3>
 
 <p><img alt="screenshot" src="/play-flyway/images/screenshot1.png" /></p>
