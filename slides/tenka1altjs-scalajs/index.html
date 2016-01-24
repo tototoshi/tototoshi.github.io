@@ -256,7 +256,7 @@
     <p>
         sbt-plugin として提供されていますので、
     </p>
-    <code style="padding: 5px 3px;background-color: #EEEEEE">addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.4.4")
+    <code style="padding: 5px 3px;background-color: #EEEEEE">addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.6")
     </code>
     <p>
         と sbt のプラグイン設定ファイルに書き加えるだけで導入できてしまいます。
@@ -265,7 +265,7 @@
         <b>そんな簡単にできるわけないだろう</b>とお思いの方もいらっしゃると思いますが、これはれっきとした事実です。<br/>
         コンパイルも
     </p>
-    <code style="padding: 5px 3px;background-color: #EEEEEE">sbt compile packageJS optimizeJS
+    <code style="padding: 5px 3px;background-color: #EEEEEE">sbt fullOptJS
     </code>
     <p>
         と打つだけです。
