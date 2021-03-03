@@ -1,0 +1,470 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    html {
+      font-size: 32px;
+    }
+
+    html,
+    body {
+      width: 95%;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    .new-page {
+      break-before: page
+    }
+
+    h1,
+    h2 {
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 1.8rem;
+    }
+
+    pre > code {
+      font-size: .65rem;
+    }
+
+    a:link, a:visited { color:#12A0FF; text-decoration:none; }
+    a:hover { color:#FF1385; }
+  </style>
+  <style type="text/css" media="screen">
+    .page {
+      width: 100%;
+      min-height: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+  </style>
+  <style type="text/css" media="print">
+    .page {
+      height: 720px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>JavaScriptでテキストエディタを作る</h1>
+    <p>
+      <a href="https://twitter.com/tototoshi">Toshiyuki Takahashi</a>
+    </p>
+    <p>
+      <a href="https://sfeug.connpass.com/event/204916/">Sendai Frontend Meetup #5</a>
+    </p>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>作るもの</h2>
+    <ul>
+      <li>JavaScriptで動作するテキストエディタ</li>
+      <ul>
+        <li>いろいろあるよね</li>
+        <li>Ace Editor</li>
+        <li>Code Mirror</li>
+      </ul>
+      <li>ナイーブな実装でどこまでできるか試してみる</li>
+    </ul>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>技術スタック</h2>
+    <h3>言語/フレームワーク</h3>
+    <ul>
+      <li>JavaScript</li>
+      <ul>
+        <li>あとでScala.jsにしました</li>
+      </ul>
+      <li>React</li>
+    </ul>
+    <h3>動作環境</h3>
+      <ul>
+        <li>ブラウザ(Google Chrome)</li>
+        <ul>
+          <li>あとでElectronに載せました</li>
+        </ul>
+      </ul>
+  </div>
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>Hello World</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="und" dir="ltr"><a href="https://t.co/UZU5bX3sMQ">pic.twitter.com/UZU5bX3sMQ</a></p>&mdash; Toshiyuki
+      Takahashi (@tototoshi) <a href="https://twitter.com/tototoshi/status/1256843963308244993?ref_src=twsrc%5Etfw">May
+        3, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>動作原理</h2>
+    <ul>
+      <li>divでキーボードイベントをlisten</li>
+      <li>入力された文字をdiv内に追加</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>日本語入力難しい</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">JavaScriptでIMEの入力開始イベント(compositionstart)が取れるのだけど、そのイベントよりも先に入力内容のkeydownイベントが飛んでくるのしんどすぎる。
+      </p>&mdash; Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1256845280823005184?ref_src=twsrc%5Etfw">May 3, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <ul>
+      <li>compositionstart/compositionendとかを使うらしい</li>
+      <li>なんかイベント順序とか癖が強い気がする（ブラウザによっても結構違うらしい）</li>
+      <li>海外のサービスの日本語入力がおかしいのもわかる</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>シンタックスハイライト</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">シンタックスハイライトできた <a href="https://t.co/XKY7KY7fE3">pic.twitter.com/XKY7KY7fE3</a></p>&mdash;
+      Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1257268593344970752?ref_src=twsrc%5Etfw">May 4, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>シンタックスハイライト</h2>
+    <ul>
+      <li>頑張ってパースする👊</li>
+      <ol>
+        <li>まずParser Combinatorを作ります</li>
+        <li>それを使って各言語のパーサーを実装します</li>
+      </ol>
+      <li>1文字入力するごとにパースしなおす👊（激重）</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>シンタックスハイライト</h2>
+    <ul>
+      <li>コードをシンタックスの情報を追加したデータに変換する</li>
+    </ul>
+    <div style="display: flex; flex-direction: row">
+      <div style="width: 50%">
+        <pre><code class="plaintext">window.onload = function() {
+  console.log(&quot;Hello&quot;);
+};</code></pre>
+      </div>
+      <div style="flex: 1; overflow: auto; font-size: 0.6rem">
+        <pre><code class="json">[
+      {
+        &quot;elements&quot;: [
+          { &quot;types&quot;: [], &quot;text&quot;: &quot;window.onload = &quot;, &quot;id&quot;: 146 },
+          { &quot;types&quot;: [&quot;keyword&quot;], &quot;text&quot;: &quot;function&quot;, &quot;id&quot;: 147 },
+          { &quot;types&quot;: [], &quot;text&quot;: &quot;() {&quot;, &quot;id&quot;: 148 }
+        ],
+        &quot;id&quot;: 242
+      },
+      {
+        &quot;elements&quot;: [
+          { &quot;types&quot;: [], &quot;text&quot;: &quot;  console.log(&quot;, &quot;id&quot;: 149 },
+          { &quot;types&quot;: [&quot;quote&quot;], &quot;text&quot;: &quot;\&quot;Hello\&quot;&quot;, &quot;id&quot;: 150 },
+          { &quot;types&quot;: [], &quot;text&quot;: &quot;);&quot;, &quot;id&quot;: 151 }
+        ],
+        &quot;id&quot;: 246
+      },
+      {
+        &quot;elements&quot;: [
+          { &quot;types&quot;: [], &quot;text&quot;: &quot;}&quot;, &quot;id&quot;: 152 }
+        ],
+        &quot;id&quot;: 248
+      }
+]</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>シンタックスハイライト</h2>
+    <ul>
+      <li>ReactでDOMに変換する</li>
+    </ul>
+
+    <pre><code class="html">&lt;div class=&quot;editor-content&quot;&gt;
+  &lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;line-content&quot;&gt;&lt;span class=&quot;&quot;&gt;window.onload = &lt;/span&gt;&lt;span
+        class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;&quot;&gt;() {&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;line cursor&quot;&gt;&lt;span class=&quot;line-content&quot;&gt;&lt;span class=&quot;&quot;&gt; console.log(&lt;/span&gt;&lt;span
+        class=&quot;quote&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;span class=&quot;&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;cursor&quot; tabindex=&quot;0&quot;
+        contenteditable=&quot;true&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;line-content&quot;&gt;&lt;span class=&quot;&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>いろいろ追加</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">undoとコピペができるようになった。 <a href="https://t.co/Cj0D3BxdV1">pic.twitter.com/Cj0D3BxdV1</a></p>
+      &mdash; Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1257647685240098817?ref_src=twsrc%5Etfw">May 5, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>いろいろ追加</h2>
+    <ul>
+      <li>Reactなのでstateの履歴を保存しておくと手軽にundoが実装できる</li>
+      <li>OSのclipboardとのやりとりはElectronに載せてからやろう→結局やってない</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>マウス操作</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">自作エディタ、マウス操作が少しできるようになった <a href="https://t.co/vHd7R2U91f">pic.twitter.com/vHd7R2U91f</a>
+      </p>&mdash; Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1259024889186414593?ref_src=twsrc%5Etfw">May 9, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>マウス操作</h2>
+    <ul>
+      <li>一応実装できるがちょっとレスポンスが遅い</li>
+      <li>debounceすれば良いとかではなく設計の限界という感じ</li>
+    </ul>
+  </div>
+
+  <div class="page">
+    <h2>遅い🐢</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">富豪的な作りをしてるので3000行くらいになると遅くて無理っぽくなる。なにかしら最適化しないとダメそう。</p>&mdash; Toshiyuki Takahashi
+      (@tototoshi) <a href="https://twitter.com/tototoshi/status/1257648408224919552?ref_src=twsrc%5Etfw">May 5,
+        2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>なぜ遅いのか</h2>
+    <ul>
+      <li>Reactの要素数が多い（行数*n）</li>
+      <li>Reactのkeyの振り方が悪くてReactの差分検出が効いていない</li>
+      <li>シンタックスハイライトのパーサーが遅い&ブロックする</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>最適化</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">自作エディタ、最適化頑張ったらなんとか数千行なら耐えられるようになった。 <a
+          href="https://t.co/ZKPALnqXki">pic.twitter.com/ZKPALnqXki</a></p>&mdash; Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1261543065124139009?ref_src=twsrc%5Etfw">May 16, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>最適化</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">
+        最初が完全に富豪設計だったから大した話ではないんだけど、ビューのデータ構造を毎回生成するんじゃなくて直接編集するようにしたり、Reactの最適化、シンタックスハイライトのパーサーをWeb Workerに乗せたりした。</p>
+      &mdash; Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1261544818418700288?ref_src=twsrc%5Etfw">May 16, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">万単位の要素を毎回renderしてるとReactめちゃくちゃ遅いのでとにかくrender減らすのを頑張る感じ。</p>&mdash; Toshiyuki Takahashi
+      (@tototoshi) <a href="https://twitter.com/tototoshi/status/1261545936083234816?ref_src=twsrc%5Etfw">May 16,
+        2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>最適化(React)</h2>
+    <ul>
+      <li><a href="https://reactjs.org/docs/optimizing-performance.html">Optimizing Performance</a></li>
+      <li>Reactが差分検出しやすいようにkeyをふったり</li>
+      <li>useMemoしたり</li>
+      <li>（やらなかったけど）見えてるところだけレンダリングする。</li>
+      <li>真面目にやれということ</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>最適化(Web Worker)</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers">MDN</a></li>
+      <li>ブラウザでマルチスレッドができる</li>
+      <li>Electron前提ならmain process経由で別プロセスに処理を委譲できそう</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>最適化(Web Worker)</h2>
+    <h3>Before</h3>
+    <img src="sh1.svg" style="width: 720px">
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>最適化(Web Worker)</h2>
+    <h3>After</h3>
+    <img src="sh2.svg" style="width: 960px">
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>コードの複雑化</h2>
+    <ul>
+      <li>最適化などもありコードが複雑になってきた</li>
+      <li>そろそろ型をつけたい</li>
+      <li>JavaScriptに変換できて型がつけられる言語が欲しいなあ</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>Scala.js</h2>
+    <iframe src="https://www.scala-js.org/" frameborder="0" width="100%" height="80%"></iframe>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>Scala.js</h2>
+    <ul>
+      <li>意外となにも問題なく動く</li>
+    </ul>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">Scala.jsでElectron、昨日は起動しただけだったけどipcとかも試してみて普通にできた。そりゃあできるだろって感じですが...</p>&mdash; Toshiyuki
+      Takahashi (@tototoshi) <a href="https://twitter.com/tototoshi/status/1263119668966854656?ref_src=twsrc%5Etfw">May
+        20, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">CommonJSとかES Moduleで吐き出せるのでそれを普通にJSとしてビルドしてやれば良い。</p>&mdash; Toshiyuki Takahashi
+      (@tototoshi) <a href="https://twitter.com/tototoshi/status/1263120693190725632?ref_src=twsrc%5Etfw">May 20,
+        2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>.d.ts 的なやつ</h2>
+    <pre><code class="scala">@JSImport("react-dom", JSImport.Namespace)
+@js.native
+object ReactDom extends js.Object {
+  def render(reactElement: ReactElement,
+             domElement: dom.Element): Unit = js.native
+}</code></pre>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>その他</h2>
+    <ul>
+      <li>末尾再帰最適化</li>
+      <ul>
+        <li>シンタックスハイライトのパーサーで再帰関数を多用している</li>
+        <li>JavaScriptだと無限に再帰するとスタックがあふれる</li>
+        <li>trampolineと呼ばれる最適化を自分で行う必要がある</li>
+        <li>Scalaなら末尾再帰最適化がされるのでtrampolineする必要がなくなった</li>
+      </ul>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>仕上げ</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="ja" dir="ltr">自作エディタ、Scala.jsにした。そんでelectronに乗せた。 <a
+          href="https://t.co/SCc1idYfTZ">pic.twitter.com/SCc1idYfTZ</a></p>&mdash; Toshiyuki Takahashi (@tototoshi) <a
+        href="https://twitter.com/tototoshi/status/1262744512436174852?ref_src=twsrc%5Etfw">May 19, 2020</a>
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <ul>
+      <li>Electronについてはまた別の機会に</li>
+    </ul>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>Source Code</h2>
+    <a href="https://github.com/tototoshi/scala-js-electron-text-editor">https://github.com/tototoshi/scala-js-electron-text-editor</a>
+  </div>
+
+  <div class="new-page"></div>
+
+  <div class="page">
+    <h2>まとめ</h2>
+
+    <ul>
+      <li>Reactはレンダリングの回数をケチケチしよう</li>
+      <li>Web Worker便利</li>
+      <li>ぼくのかんがえたナイーブなじっそうの限界がわかった</li>
+      <li>Scala.jsは便利だけどTypeScriptで良いと思います</li>
+    </ul>
+
+  </div>
+
+  <div style="position: fixed; right: 10px; bottom: 10px;">
+    <a id="next" href="#">Next</a>
+  </div>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/vs.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="slide.js" type="text/javascript"></script>
+</body>

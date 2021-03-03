@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="502px" preserveAspectRatio="none" style="width:746px;height:502px;" version="1.1" viewBox="0 0 746 502" width="746px" zoomAndPan="magnify"><defs/><g><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="23" x2="23" y1="84.4883" y2="420.2832"/><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="198" x2="198" y1="84.4883" y2="420.2832"/><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="511" x2="511" y1="84.4883" y2="420.2832"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="5" y="81.5352">User</text><ellipse cx="23.5" cy="15" fill="#F8F8F8" rx="8" ry="8" style="stroke:#383838;stroke-width:2.0;"/><path d="M23.5,23 L23.5,50 M10.5,31 L36.5,31 M23.5,50 L10.5,65 M23.5,50 L36.5,65 " fill="none" style="stroke:#383838;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="5" y="432.8184">User</text><ellipse cx="23.5" cy="445.7715" fill="#F8F8F8" rx="8" ry="8" style="stroke:#383838;stroke-width:2.0;"/><path d="M23.5,453.7715 L23.5,480.7715 M10.5,461.7715 L36.5,461.7715 M23.5,480.7715 L10.5,495.7715 M23.5,480.7715 L36.5,495.7715 " fill="none" style="stroke:#383838;stroke-width:2.0;"/><rect fill="#F8F8F8" height="30.4883" style="stroke:#383838;stroke-width:1.5;" width="69" x="164" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="171" y="73.5352">Browser</text><rect fill="#F8F8F8" height="30.4883" style="stroke:#383838;stroke-width:1.5;" width="69" x="164" y="419.2832"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="55" x="171" y="439.8184">Browser</text><rect fill="#F8F8F8" height="30.4883" style="stroke:#383838;stroke-width:1.5;" width="63" x="480" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="487" y="73.5352">Worker</text><rect fill="#F8F8F8" height="30.4883" style="stroke:#383838;stroke-width:1.5;" width="63" x="480" y="419.2832"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="487" y="439.8184">Worker</text><polygon fill="#383838" points="186.5,111.7988,196.5,115.7988,186.5,119.7988,190.5,115.7988" style="stroke:#383838;stroke-width:1.0;"/><line style="stroke:#383838;stroke-width:1.0;" x1="23.5" x2="192.5" y1="115.7988" y2="115.7988"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="30.5" y="111.0566">文字を入力</text><line style="stroke:#383838;stroke-width:1.0;" x1="198.5" x2="240.5" y1="145.1094" y2="145.1094"/><line style="stroke:#383838;stroke-width:1.0;" x1="240.5" x2="240.5" y1="145.1094" y2="158.1094"/><line style="stroke:#383838;stroke-width:1.0;" x1="199.5" x2="240.5" y1="158.1094" y2="158.1094"/><polygon fill="#383838" points="209.5,154.1094,199.5,158.1094,209.5,162.1094,205.5,158.1094" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="208" x="205.5" y="140.3672">入力された文字を内部モデルに反映</text><polygon fill="#383838" points="34.5,183.4199,24.5,187.4199,34.5,191.4199,30.5,187.4199" style="stroke:#383838;stroke-width:1.0;"/><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="28.5" x2="197.5" y1="187.4199" y2="187.4199"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="151" x="40.5" y="182.6777">Reactによるレンダリング</text><polygon fill="#383838" points="499.5,212.7305,509.5,216.7305,499.5,220.7305,503.5,216.7305" style="stroke:#383838;stroke-width:1.0;"/><line style="stroke:#383838;stroke-width:1.0;" x1="198.5" x2="505.5" y1="216.7305" y2="216.7305"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="205.5" y="211.9883">シンタックスハイライトを要求</text><line style="stroke:#383838;stroke-width:1.0;" x1="511.5" x2="553.5" y1="246.041" y2="246.041"/><line style="stroke:#383838;stroke-width:1.0;" x1="553.5" x2="553.5" y1="246.041" y2="259.041"/><line style="stroke:#383838;stroke-width:1.0;" x1="512.5" x2="553.5" y1="259.041" y2="259.041"/><polygon fill="#383838" points="522.5,255.041,512.5,259.041,522.5,263.041,518.5,259.041" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="221" x="518.5" y="241.2988">シンタックスハイライトの処理を行う</text><line style="stroke:#383838;stroke-width:1.0;" x1="198.5" x2="240.5" y1="288.3516" y2="288.3516"/><line style="stroke:#383838;stroke-width:1.0;" x1="240.5" x2="240.5" y1="288.3516" y2="301.3516"/><line style="stroke:#383838;stroke-width:1.0;" x1="199.5" x2="240.5" y1="301.3516" y2="301.3516"/><polygon fill="#383838" points="209.5,297.3516,199.5,301.3516,209.5,305.3516,205.5,301.3516" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="205.5" y="283.6094">ユーザーの入力待ち状態</text><polygon fill="#383838" points="209.5,326.6621,199.5,330.6621,209.5,334.6621,205.5,330.6621" style="stroke:#383838;stroke-width:1.0;"/><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="203.5" x2="510.5" y1="330.6621" y2="330.6621"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="221" x="215.5" y="325.9199">シンタックスハイライトの結果を返す</text><line style="stroke:#383838;stroke-width:1.0;" x1="198.5" x2="240.5" y1="359.9727" y2="359.9727"/><line style="stroke:#383838;stroke-width:1.0;" x1="240.5" x2="240.5" y1="359.9727" y2="372.9727"/><line style="stroke:#383838;stroke-width:1.0;" x1="199.5" x2="240.5" y1="372.9727" y2="372.9727"/><polygon fill="#383838" points="209.5,368.9727,199.5,372.9727,209.5,376.9727,205.5,372.9727" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="299" x="205.5" y="355.2305">シンタックスハイライトの結果を内部モデルに反映</text><polygon fill="#383838" points="34.5,398.2832,24.5,402.2832,34.5,406.2832,30.5,402.2832" style="stroke:#383838;stroke-width:1.0;"/><line style="stroke:#383838;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="28.5" x2="197.5" y1="402.2832" y2="402.2832"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="151" x="40.5" y="397.541">Reactによるレンダリング</text><!--MD5=[de8427d9c25f46173d59b42db917acb8]
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+
+
+Actor User
+participant Browser
+participant Worker
+
+User -> Browser: 文字を入力
+
+Browser -> Browser: 入力された文字を内部モデルに反映
+
+Browser - -> User: Reactによるレンダリング
+
+Browser -> Worker: シンタックスハイライトを要求
+
+Worker -> Worker: シンタックスハイライトの処理を行う
+
+Browser -> Browser: ユーザーの入力待ち状態
+
+Worker - -> Browser: シンタックスハイライトの結果を返す
+
+Browser -> Browser: シンタックスハイライトの結果を内部モデルに反映
+
+Browser - -> User: Reactによるレンダリング
+
+@enduml
+
+PlantUML version 1.2021.01(Tue Feb 02 16:55:08 JST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: ja
+Country: JP
+--></g></svg>
